@@ -1,5 +1,7 @@
 import * as React from "react";
 import { FeatureCard } from "../components/FeatureCard";
+import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
 import {
   ShieldCheckIcon,
   LeafIcon,
@@ -37,16 +39,12 @@ const benefits = [
 export function BenefitsSection() {
   return (
     <section className="py-14">
-      <div className="mx-auto w-full max-w-6xl px-4">
-        <header className="max-w-2xl">
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
-            چرا کلینیک فیزیوتراپی فک و دهان؟
-          </h2>
-          <p className="mt-3 text-base leading-7 text-zinc-600 dark:text-zinc-300">
-            درمان اختلالات فک (TMD) نیاز به ارزیابی تخصصی، برنامه تمرینی دقیق و
-            تکنیک‌های دستی دارد.
-          </p>
-        </header>
+      <Container>
+        <SectionHeading
+          eyebrow="مزایای درمان"
+          title="چرا کلینیک فیزیوتراپی فک و دهان؟"
+          description="درمان اختلالات فک (TMD) نیاز به ارزیابی تخصصی، برنامه تمرینی دقیق و تکنیک‌های دستی دارد."
+        />
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map((item) => (
@@ -58,7 +56,7 @@ export function BenefitsSection() {
             />
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
