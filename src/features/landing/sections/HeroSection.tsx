@@ -92,9 +92,9 @@ export default function HeroSection() {
         </div>
       </section>
       {/* ۴ کارت ویژگی شناور (Floating Trust Bar) */}
-      <div dir="rtl" className="relative z-10 px-6 -mt-10 lg:-mt-14">
+      <div  className="relative z-10 px-6 -mt-10 lg:-mt-14">
         <div className="mx-auto max-w-6xl rounded-2xl bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#f5ece3]">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 divide-y-0 divide-x-0 md:divide-x md:divide-x-reverse md:divide-[#f5ece3]">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 divide-y-0 divide-x-0 md:divide-x md:divide-x md:divide-[#f5ece3]">
             {FEATURES.map((feat, idx) => {
               const Icon = feat.icon;
               return (
