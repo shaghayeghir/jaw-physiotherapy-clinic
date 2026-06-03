@@ -7,7 +7,7 @@ export default function Page() {
     <>
       <HeroSection />
       <BenefitsSection />
-      <SymptomsSection />
+
     </>
   );
 }

@@ -19,7 +19,7 @@ export function FeatureCard({
       className={cn(
         "group rounded-2xl border border-zinc-200/70 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md",
         "dark:border-zinc-800 dark:bg-zinc-950",
-        className
+        className,
       )}
     >
       <div className="flex items-start gap-4">

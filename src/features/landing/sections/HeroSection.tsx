@@ -69,8 +69,8 @@ export default function HeroSection() {
             </h1>
 
             <p className="mt-3 max-w-xl text-base leading-7 text-[#6b665f] sm:text-lg">
-              درمان اخلال مفصل گیج گاهی-فکی (TMJ) با رویکردی علمی  و
-              شخصی سازی شده
+              درمان اخلال مفصل گیج گاهی-فکی (TMJ) با رویکردی علمی و شخصی سازی
+              شده
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">
@@ -92,25 +92,34 @@ export default function HeroSection() {
         </div>
       </section>
       {/* ۴ کارت ویژگی شناور (Floating Trust Bar) */}
-      <div  className="relative z-10 px-6 -mt-10 lg:-mt-14">
-        <div className="mx-auto max-w-6xl rounded-2xl bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#f5ece3]">
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4 divide-y-0 divide-x-0 md:divide-x md:divide-x md:divide-[#f5ece3]">
+      <div className="relative z-10 px-4 sm:px-6 -mt-2 sm:-mt-6 lg:-mt-12">
+        <div className="mx-auto max-w-6xl rounded-2xl bg-white p-4 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#f5ece3]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {FEATURES.map((feat, idx) => {
               const Icon = feat.icon;
               return (
                 <div
                   key={idx}
-                  className="flex flex-col sm:flex-row items-center text-center sm:text-right gap-3 px-4 py-3"
+                  className="
+                  sm:flex-row sm:items-start sm:text-right
+                  gap-3 px-4 py-4
+                  border-b sm:border-b-0
+                  sm:border-l
+                  border-[#f5ece3]
+                  last:border-b-0
+                  lg:last:border-l-0
+                  flex flex-col items-center text-center
+                  "
                 >
-                  {/* دایره آیکون با رنگ پس‌زمینه ملایم هماهنگ با طرح */}
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#faede8] text-[#d59a8f]">
                     <Icon className="h-6 w-6" />
                   </div>
+
                   <div>
                     <h3 className="text-sm font-bold text-[#495144]">
                       {feat.title}
                     </h3>
-                    <p className="mt-0.5 text-xs text-[#8c857b]">
+                    <p className="mt-1 text-xs text-[#8c857b]">
                       {feat.description}
                     </p>
                   </div>
