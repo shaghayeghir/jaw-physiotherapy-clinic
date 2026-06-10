@@ -37,7 +37,7 @@ export default function HeroSection() {
     <>
       <section
         dir="rtl"
-        className="w-full bg-[#fdf8f2] overflow-hidden px-6 lg:px-16 py-6 lg:py-10"
+        className="w-full bg-[#fdf8f2] w-full px-4 pt-4 sm:px-6 lg:px-8"
       >
         {/* ردیف اصلی باید full-width باشد */}
         <div className="flex w-full flex-col lg:flex-row items-center gap-8">
@@ -110,10 +110,18 @@ export default function HeroSection() {
                   lg:last:border-l-0
                   flex flex-col items-center text-center
                   "
+                  
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#faede8] text-[#d59a8f]">
-                    <Icon className="h-6 w-6" />
-                  </div>
+               
+                  {idx % 2 == 0 ? (
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#faede8] text-[#d59a8f]">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                  ) : (
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#eff0ec] text-[#8b9472]">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                  )}
 
                   <div>
                     <h3 className="text-sm font-bold text-[#495144]">
