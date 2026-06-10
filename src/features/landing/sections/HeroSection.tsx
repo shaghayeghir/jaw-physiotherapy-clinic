@@ -72,7 +72,7 @@ export default function HeroSection() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-[#caa497] bg-transparent text-[#9d6257] dark:text-[#9d6257] hover:bg-[#f7ece7] whitespace-nowrap"
+                  className="border-[#caa497] dark:border-[#caa497] bg-transparent text-[#9d6257] dark:text-[#9d6257] hover:bg-[#f7ece7] whitespace-nowrap"
                 >
                   تماس با سپیده مصری پور
                 </Button>
