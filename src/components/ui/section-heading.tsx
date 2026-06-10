@@ -30,7 +30,7 @@ export function SectionHeading({
         </p>
       ) : null}
 
-      <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
+      <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-500 sm:text-3xl">
         {title}
       </h2>
 

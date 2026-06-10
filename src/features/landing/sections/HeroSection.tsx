@@ -33,69 +33,70 @@ const FEATURES = [
   },
 ];
 export default function HeroSection() {
-return (
+  return (
     <>
-      <section
-        dir="rtl"
-        className="w-full bg-[#fdf8f2] px-4 pt-6 pb-12 sm:px-6 lg:px-8"
-      >
-        {/* استفاده از flex-col-reverse در موبایل برای بالا آمدن متن و پایین رفتن عکس */}
-        <div className="flex w-full flex-col-reverse lg:flex-row items-center gap-8 lg:gap-18">
-          
-          {/* بخش متن هیرو */}
-          <div className="w-full lg:max-w-[640px] text-center lg:text-right">
-            <p className="inline-flex items-center gap-3 rounded-full bg-[#d59a8f] px-4 py-1.5 text-xs font-semibold text-white shadow-sm">
-              درمان تخصصی، بدون جراحی
-              <ShieldCheckIcon
-                className="h-4 w-4 shrink-0 text-white"
-                aria-hidden="true"
-              />
-            </p>
+      <div className="w-full bg-white p-2 sm:p-8 lg:p-4">
+        {/* باکس داخلی هیرو با لبه‌های کاملاً گرد و پس‌زمینه کرم روشن (مطابق عکس) */}
+        <section
+          dir="rtl"
+          className="relative rounded-[2.5rem] lg:rounded-[3.5rem] bg-[#fdf8f2] px-6 pt-2 pb-10 lg:pb-12"
+        >
+          {/* استفاده از flex-col-reverse در موبایل برای بالا آمدن متن و پایین رفتن عکس */}
+          <div className="flex w-full flex-col-reverse lg:flex-row items-center gap-8 lg:gap-18">
+            {/* بخش متن هیرو */}
+            <div className="w-full lg:max-w-[640px] text-center lg:text-right">
+              <p className="inline-flex items-center gap-3 rounded-full bg-[#d59a8f] px-4 py-1.5 text-xs font-semibold text-white shadow-sm">
+                درمان تخصصی، بدون جراحی
+                <ShieldCheckIcon
+                  className="h-4 w-4 shrink-0 text-white"
+                  aria-hidden="true"
+                />
+              </p>
 
-            <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-[#495144] sm:text-5xl">
-              فیزیوتراپی تخصصی فک و دهان
-            </h1>
+              <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-[#495144] sm:text-5xl">
+                فیزیوتراپی تخصصی فک و دهان
+              </h1>
 
-            <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-base leading-7 text-[#6b665f] sm:text-lg">
-              درمان اختلال مفصل گیجگاهی-فکی (TMJ) با رویکردی علمی و شخصی‌سازی شده
-            </p>
+              <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-base leading-7 text-[#6b665f] sm:text-lg">
+                درمان اختلال مفصل گیجگاهی-فکی (TMJ) با رویکردی علمی و شخصی‌سازی
+                شده
+              </p>
 
-            <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
-              <Button
-                size="lg"
-                className="bg-[#8b9472] text-white hover:bg-[#76805d]"
-              >
-                شروع ارزیابی آنلاین
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-[#caa497] bg-transparent text-[#9d6257] dark:text-[#9d6257] hover:bg-[#f7ece7] whitespace-nowrap"
-              >
-                تماس با سپیده مصری پور
-              </Button>
+              <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
+                <Button
+                  size="lg"
+                  className="bg-[#8b9472] text-white hover:bg-[#76805d]"
+                >
+                  شروع ارزیابی آنلاین
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#caa497] bg-transparent text-[#9d6257] dark:text-[#9d6257] hover:bg-[#f7ece7] whitespace-nowrap"
+                >
+                  تماس با سپیده مصری پور
+                </Button>
+              </div>
+            </div>
+
+            {/* بخش تصویر هیرو */}
+            <div className="w-full flex justify-center">
+              <div className="relative w-[260px] sm:w-[320px] lg:w-[580px] aspect-[4/3] max-w-full">
+                <Image
+                  src="/image/hero/jaw-physiotherapy-hero-transparent.png"
+                  alt="TMD physiotherapy illustration"
+                  fill
+                  priority
+                  className="object-contain"
+                />
+                <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-emerald-700/10 blur-3xl" />
+              </div>
             </div>
           </div>
-
-          {/* بخش تصویر هیرو */}
-          <div className="w-full flex justify-center">
-            <div className="relative w-[260px] sm:w-[320px] lg:w-[580px] aspect-[4/3] max-w-full">
-              <Image
-                src="/image/hero/jaw-physiotherapy-hero-transparent.png"
-                alt="TMD physiotherapy illustration"
-                fill
-                priority
-                className="object-contain"
-              />
-              <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-emerald-700/10 blur-3xl" />
-            </div>
-          </div>
-
-        </div>
-      </section>
-
+        </section>
+      </div>
       {/* ۴ کارت ویژگی شناور (Floating Trust Bar) */}
-      <div className="relative z-10 px-4 sm:px-6 -mt-6 sm:-mt-10 lg:-mt-14">
+      <div className="relative z-10 px-4 sm:px-6 -mt-6 sm:-mt-17 lg:-mt-14">
         <div className="mx-auto max-w-6xl rounded-2xl bg-white p-2 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-[#f5ece3]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {FEATURES.map((feat, idx) => {

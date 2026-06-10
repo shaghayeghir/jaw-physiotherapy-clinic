@@ -95,13 +95,13 @@ const symptoms = [
 
 export function BenefitsSection() {
   return (
-    <section dir="rtl" className=" py-20 px-6">
+    <section dir="rtl" className=" py-10 px-6">
       <Container>
         {/* هدر بخش - کاملاً وسط چین */}
         <SectionHeading
           align="center"
           title="علائم شایع اختلالات فک و مفصل گیجگاهی - فکی"
-          className="mb-12"
+          className="mb-12 "
         />
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
