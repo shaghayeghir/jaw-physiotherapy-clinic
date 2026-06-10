@@ -7,7 +7,7 @@ import { Menu, X, CalendarDays } from "lucide-react";
 import Image from "next/image";
 const NAV_LINKS = [
   { title: "خانه", href: "/" },
-  { title: "درباره ما", href: "/about" },
+  { title: "درباره من", href: "/about" },
   { title: "خدمات", href: "/services" },
   { title: "مقالات", href: "/blog" },
   { title: "تماس با ما", href: "/contact" },
@@ -46,7 +46,7 @@ export default function Navbar() {
           </div>
 
           {/* بخش وسط: منوهای دسکتاپ */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-18">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.title}
