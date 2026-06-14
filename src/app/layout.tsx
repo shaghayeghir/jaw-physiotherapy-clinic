@@ -23,11 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <Navbar />
       <body className={`${vazirmatn.variable} font-sans antialiased`}>
+        <Navbar />
         {children}
+        <Footer />
       </body>
-      <Footer />
     </html>
   );
 }
