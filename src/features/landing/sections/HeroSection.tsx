@@ -54,14 +54,17 @@ export default function HeroSection() {
               </p>
 
               <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight text-[#495144] sm:text-5xl">
-                فیزیوتراپی تخصصی فک و دهان
+                فیزیوتراپی تخصصی فک و گردن
               </h1>
 
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-base leading-7 text-[#6b665f] sm:text-lg">
                 درمان اختلال مفصل گیجگاهی-فکی (TMJ) با رویکردی علمی و شخصی‌سازی
                 شده
               </p>
-
+              <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-base leading-7 text-[#d59a8f] sm:text-lg">
+              آرامش جسم تو حس خوب من ❤
+              </p>
+           
               <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
                 <Button
                   size="lg"

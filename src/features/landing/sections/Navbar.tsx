@@ -10,7 +10,9 @@ const NAV_LINKS = [
   { title: "درباره من", href: "/about" },
   { title: "خدمات", href: "/services" },
   { title: "مقالات", href: "/blog" },
+    { title: "  ارزیابی شدت علائم", href: "/painform" },
   { title: "تماس با ما", href: "/contact" },
+
 ];
 
 export default function Navbar() {
@@ -42,6 +44,7 @@ export default function Navbar() {
               <span className="text-[10px] font-medium text-[#8b9472] tracking-[0.1em] -mt-1">
                 سپیده مصری پور
               </span>
+           
             </div>
           </div>
 
@@ -60,7 +63,7 @@ export default function Navbar() {
 
           {/* بخش چپ: دکمه نوبت‌دهی (دسکتاپ) و منو همبرگری (موبایل) */}
           <div className="flex items-center gap-3">
-            <Button className="hidden sm:flex items-center gap-2 bg-[#d58f9b] hover:bg-[#76805d] text-white rounded-xl px-5">
+            <Button className="hidden sm:flex items-center gap-2 bg-[#d59a8f] hover:bg-[#76805d] text-white rounded-xl px-5">
               <CalendarDays className="h-4 w-4" />
               نوبت‌دهی آنلاین
             </Button>
