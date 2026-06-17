@@ -20,17 +20,25 @@ export default function QuestionnaireEngine({
   questionnaire,
 }: QuestionnaireEngineProps) {
   const [answers, setAnswers] = useState<Record<string, number>>({})
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [result, setResult] = useState<AssessmentResult | null>(null)
 
-  const totalQuestions = questionnaire.questions.length
-  const answeredQuestions = Object.keys(answers).length
-  const progress = Math.round((answeredQuestions / totalQuestions) * 100)
-  const isComplete = answeredQuestions === totalQuestions
-
-  const orderedQuestions = useMemo(
+  const questions = useMemo(
     () => questionnaire.questions,
     [questionnaire.questions]
   )
+
+  const totalQuestions = questions.length
+  const currentQuestion = questions[currentIndex]
+
+  const currentAnswer = answers[currentQuestion.id]
+  const hasCurrentAnswer = currentAnswer !== undefined
+
+  const answeredQuestions = Object.keys(answers).length
+  const isFirstQuestion = currentIndex === 0
+  const isLastQuestion = currentIndex === totalQuestions - 1
+
+  const progress = Math.round(((currentIndex + 1) / totalQuestions) * 100)
 
   const handleAnswer = (questionId: string, value: number) => {
     setAnswers((prev) => ({
@@ -43,17 +51,40 @@ export default function QuestionnaireEngine({
     }
   }
 
-  const handleSubmit = () => {
-    if (!isComplete) return
+  const goNext = () => {
+    if (!hasCurrentAnswer) return
 
-    const nextResult = calculateAssessmentResult(slug, answers)
-    setResult(nextResult)
+    if (isLastQuestion) {
+      const nextResult = calculateAssessmentResult(slug, answers)
+      setResult(nextResult)
 
-    window.setTimeout(() => {
-      document
-        .getElementById("assessment-result")
-        ?.scrollIntoView({ behavior: "smooth", block: "center" })
-    }, 80)
+      window.setTimeout(() => {
+        document
+          .getElementById("assessment-result")
+          ?.scrollIntoView({ behavior: "smooth", block: "center" })
+      }, 80)
+
+      return
+    }
+
+    setCurrentIndex((prev) => prev + 1)
+  }
+
+  const goPrevious = () => {
+    if (isFirstQuestion) return
+    setCurrentIndex((prev) => prev - 1)
+    setResult(null)
+  }
+
+  const restartAssessment = () => {
+    setAnswers({})
+    setCurrentIndex(0)
+    setResult(null)
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
   }
 
   return (
@@ -63,52 +94,43 @@ export default function QuestionnaireEngine({
     >
       <BackgroundDecor />
 
-      <div className="relative z-10 mx-auto max-w-5xl">
+      <div className="relative z-10 mx-auto max-w-4xl">
         <HeaderCard
           title={questionnaire.title}
           subtitle={questionnaire.subtitle}
           description={questionnaire.description}
           progress={progress}
+          currentIndex={currentIndex}
           answeredQuestions={answeredQuestions}
           totalQuestions={totalQuestions}
         />
 
-        <div className="mt-8 space-y-5">
-          {orderedQuestions.map((question, index) => (
-            <QuestionCard
-              key={question.id}
-              index={index}
-              question={question}
-              value={answers[question.id]}
-              onChange={(value) => handleAnswer(question.id, value)}
+        {!result && (
+          <>
+            <div className="mt-8">
+              <QuestionCard
+                key={currentQuestion.id}
+                index={currentIndex}
+                totalQuestions={totalQuestions}
+                question={currentQuestion}
+                value={currentAnswer}
+                onChange={(value) => handleAnswer(currentQuestion.id, value)}
+              />
+            </div>
+
+            <NavigationButtons
+              isFirstQuestion={isFirstQuestion}
+              isLastQuestion={isLastQuestion}
+              hasCurrentAnswer={hasCurrentAnswer}
+              onPrevious={goPrevious}
+              onNext={goNext}
             />
-          ))}
-        </div>
+          </>
+        )}
 
-        <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-[#6f6258]">
-            {isComplete
-              ? "همه سوال‌ها پاسخ داده شده‌اند."
-              : `${totalQuestions - answeredQuestions} سوال باقی مانده است.`}
-          </p>
-
-          <button
-            type="button"
-            onClick={handleSubmit}
-            disabled={!isComplete}
-            className={[
-              "rounded-full px-8 py-4 text-sm font-bold transition-all duration-300",
-              "shadow-[0_18px_45px_rgba(91,67,45,0.18)]",
-              isComplete
-                ? "bg-[#7c5f46] text-white hover:-translate-y-0.5 hover:bg-[#6b513b]"
-                : "cursor-not-allowed bg-[#d8cec2] text-[#8a7d70]",
-            ].join(" ")}
-          >
-            مشاهده نتیجه
-          </button>
-        </div>
-
-        {result && <ResultCard result={result} />}
+        {result && (
+          <ResultCard result={result} onRestart={restartAssessment} />
+        )}
       </div>
     </section>
   )
@@ -119,6 +141,7 @@ function HeaderCard({
   subtitle,
   description,
   progress,
+  currentIndex,
   answeredQuestions,
   totalQuestions,
 }: {
@@ -126,6 +149,7 @@ function HeaderCard({
   subtitle?: string
   description?: string
   progress: number
+  currentIndex: number
   answeredQuestions: number
   totalQuestions: number
 }) {
@@ -153,19 +177,32 @@ function HeaderCard({
           )}
         </div>
 
-        <div className="min-w-[190px] rounded-[30px] border border-white/60 bg-[#fbf8f3]/65 p-5 text-center shadow-inner">
-          <p className="text-4xl font-black text-[#7c5f46]">{progress}%</p>
+        <div className="min-w-[200px] rounded-[30px] border border-white/60 bg-[#fbf8f3]/65 p-5 text-center shadow-inner">
+          <p className="text-sm font-bold text-[#8a6d53]">سؤال فعلی</p>
+
+          <p className="mt-2 text-4xl font-black text-[#7c5f46]">
+            {currentIndex + 1}
+            <span className="text-xl text-[#9b8068]">/{totalQuestions}</span>
+          </p>
+
           <p className="mt-2 text-xs text-[#74685f]">
-            {answeredQuestions} از {totalQuestions} پاسخ
+            {answeredQuestions} پاسخ ثبت شده
           </p>
         </div>
       </div>
 
-      <div className="mt-7 h-3 overflow-hidden rounded-full bg-[#ded4c8]">
-        <div
-          className="h-full rounded-full bg-gradient-to-l from-[#7c5f46] via-[#a88a6a] to-[#d7bea1] transition-all duration-500"
-          style={{ width: `${progress}%` }}
-        />
+      <div className="mt-7">
+        <div className="mb-2 flex items-center justify-between text-xs font-bold text-[#7d6f63]">
+          <span>پیشرفت</span>
+          <span>{progress}%</span>
+        </div>
+
+        <div className="h-3 overflow-hidden rounded-full bg-[#ded4c8]">
+          <div
+            className="h-full rounded-full bg-gradient-to-l from-[#7c5f46] via-[#a88a6a] to-[#d7bea1] transition-all duration-500"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
     </header>
   )
@@ -173,57 +210,75 @@ function HeaderCard({
 
 function QuestionCard({
   index,
+  totalQuestions,
   question,
   value,
   onChange,
 }: {
   index: number
+  totalQuestions: number
   question: Question
   value?: number
   onChange: (value: number) => void
 }) {
   return (
-    <article className="group rounded-[34px] border border-white/60 bg-white/45 p-5 shadow-[0_18px_65px_rgba(88,68,50,0.10)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 sm:p-6">
-      <div className="flex gap-4">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#7c5f46] text-sm font-black text-white shadow-lg">
-          {index + 1}
-        </div>
+    <article className="animate-[fadeIn_0.35s_ease-out] rounded-[38px] border border-white/60 bg-white/50 p-6 shadow-[0_24px_80px_rgba(88,68,50,0.14)] backdrop-blur-2xl sm:p-8">
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#7c5f46] text-base font-black text-white shadow-lg">
+            {index + 1}
+          </div>
 
-        <div className="w-full">
-          <h2 className="text-base font-bold leading-8 text-[#302922] sm:text-lg">
-            {question.text}
-          </h2>
+          <div>
+            <p className="text-xs font-bold text-[#8a6d53]">
+              سؤال {index + 1} از {totalQuestions}
+            </p>
 
-          <div className="mt-5">
-            {question.type === "radio" && (
-              <RadioInput
-                options={question.options}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-
-            {question.type === "scale" && (
-              <ScaleInput
-                min={question.min}
-                max={question.max}
-                step={question.step}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-
-            {question.type === "number" && (
-              <NumberInput
-                min={question.min}
-                max={question.max}
-                placeholder={question.placeholder}
-                value={value}
-                onChange={onChange}
-              />
-            )}
+            <p className="mt-1 text-xs text-[#8d8075]">
+              لطفاً نزدیک‌ترین گزینه به وضعیت خود را انتخاب کنید.
+            </p>
           </div>
         </div>
+
+        {value !== undefined && (
+          <span className="rounded-full bg-[#e7dccf] px-4 py-2 text-xs font-bold text-[#725940]">
+            پاسخ داده شد
+          </span>
+        )}
+      </div>
+
+      <h2 className="text-xl font-black leading-10 text-[#302922] sm:text-2xl">
+        {question.text}
+      </h2>
+
+      <div className="mt-7">
+        {question.type === "radio" && (
+          <RadioInput
+            options={question.options}
+            value={value}
+            onChange={onChange}
+          />
+        )}
+
+        {question.type === "scale" && (
+          <ScaleInput
+            min={question.min}
+            max={question.max}
+            step={question.step}
+            value={value}
+            onChange={onChange}
+          />
+        )}
+
+        {question.type === "number" && (
+          <NumberInput
+            min={question.min}
+            max={question.max}
+            placeholder={question.placeholder}
+            value={value}
+            onChange={onChange}
+          />
+        )}
       </div>
     </article>
   )
@@ -242,7 +297,7 @@ function RadioInput({
   onChange: (value: number) => void
 }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-3 sm:grid-cols-2">
       {options.map((option) => {
         const selected = value === option.value
 
@@ -252,10 +307,10 @@ function RadioInput({
             type="button"
             onClick={() => onChange(option.value)}
             className={[
-              "rounded-2xl border px-4 py-4 text-sm font-bold transition-all duration-300",
+              "min-h-[72px] rounded-3xl border px-5 py-4 text-right text-sm font-bold leading-7 transition-all duration-300",
               selected
-                ? "border-[#7c5f46] bg-[#7c5f46] text-white shadow-[0_12px_30px_rgba(124,95,70,0.28)]"
-                : "border-white/70 bg-white/55 text-[#574b42] hover:border-[#b99d80] hover:bg-white/80",
+                ? "scale-[1.01] border-[#7c5f46] bg-[#7c5f46] text-white shadow-[0_16px_35px_rgba(124,95,70,0.30)]"
+                : "border-white/70 bg-white/60 text-[#574b42] hover:-translate-y-0.5 hover:border-[#b99d80] hover:bg-white/90",
             ].join(" ")}
           >
             {option.label}
@@ -282,12 +337,14 @@ function ScaleInput({
   const currentValue = value ?? min
 
   return (
-    <div className="rounded-[28px] border border-white/70 bg-white/45 p-5">
-      <div className="mb-4 flex items-center justify-between text-sm font-bold text-[#66584d]">
+    <div className="rounded-[30px] border border-white/70 bg-white/55 p-6">
+      <div className="mb-5 flex items-center justify-between text-sm font-bold text-[#66584d]">
         <span>{min}</span>
-        <span className="rounded-full bg-[#7c5f46] px-5 py-2 text-white">
+
+        <span className="rounded-full bg-[#7c5f46] px-6 py-3 text-lg font-black text-white shadow-lg">
           {currentValue}
         </span>
+
         <span>{max}</span>
       </div>
 
@@ -325,12 +382,65 @@ function NumberInput({
       placeholder={placeholder}
       value={value ?? ""}
       onChange={(event) => onChange(Number(event.target.value))}
-      className="w-full rounded-2xl border border-white/70 bg-white/60 px-5 py-4 text-right text-sm font-bold text-[#302922] outline-none transition focus:border-[#7c5f46] focus:bg-white"
+      className="w-full rounded-3xl border border-white/70 bg-white/65 px-5 py-5 text-right text-base font-bold text-[#302922] outline-none transition focus:border-[#7c5f46] focus:bg-white"
     />
   )
 }
 
-function ResultCard({ result }: { result: AssessmentResult }) {
+function NavigationButtons({
+  isFirstQuestion,
+  isLastQuestion,
+  hasCurrentAnswer,
+  onPrevious,
+  onNext,
+}: {
+  isFirstQuestion: boolean
+  isLastQuestion: boolean
+  hasCurrentAnswer: boolean
+  onPrevious: () => void
+  onNext: () => void
+}) {
+  return (
+    <div className="mt-8 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <button
+        type="button"
+        onClick={onPrevious}
+        disabled={isFirstQuestion}
+        className={[
+          "rounded-full px-7 py-4 text-sm font-bold transition-all duration-300",
+          isFirstQuestion
+            ? "cursor-not-allowed bg-white/35 text-[#aaa096]"
+            : "border border-white/70 bg-white/60 text-[#6b5848] hover:-translate-y-0.5 hover:bg-white",
+        ].join(" ")}
+      >
+        سؤال قبلی
+      </button>
+
+      <button
+        type="button"
+        onClick={onNext}
+        disabled={!hasCurrentAnswer}
+        className={[
+          "rounded-full px-9 py-4 text-sm font-black transition-all duration-300",
+          "shadow-[0_18px_45px_rgba(91,67,45,0.18)]",
+          hasCurrentAnswer
+            ? "bg-[#7c5f46] text-white hover:-translate-y-0.5 hover:bg-[#6b513b]"
+            : "cursor-not-allowed bg-[#d8cec2] text-[#8a7d70]",
+        ].join(" ")}
+      >
+        {isLastQuestion ? "مشاهده نتیجه" : "سؤال بعدی"}
+      </button>
+    </div>
+  )
+}
+
+function ResultCard({
+  result,
+  onRestart,
+}: {
+  result: AssessmentResult
+  onRestart: () => void
+}) {
   const percent = Math.round((result.score / result.maxScore) * 100)
 
   return (
@@ -354,14 +464,24 @@ function ResultCard({ result }: { result: AssessmentResult }) {
             این ابزار فقط برای غربالگری اولیه است و جایگزین تشخیص یا درمان
             تخصصی نیست.
           </p>
+
+          <button
+            type="button"
+            onClick={onRestart}
+            className="mt-6 rounded-full border border-white/70 bg-white/65 px-7 py-3 text-sm font-bold text-[#6b5848] transition hover:bg-white"
+          >
+            شروع دوباره
+          </button>
         </div>
 
         <div className="rounded-[32px] bg-[#7c5f46] px-8 py-7 text-center text-white shadow-[0_22px_55px_rgba(124,95,70,0.25)]">
           <p className="text-sm opacity-80">امتیاز شما</p>
+
           <p className="mt-2 text-5xl font-black">
             {result.score}
             <span className="text-xl opacity-70">/{result.maxScore}</span>
           </p>
+
           <p className="mt-2 text-sm opacity-80">{percent}%</p>
         </div>
       </div>
