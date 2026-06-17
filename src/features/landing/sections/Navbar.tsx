@@ -10,9 +10,8 @@ const NAV_LINKS = [
   { title: "درباره من", href: "/about" },
   { title: "خدمات", href: "/services" },
   { title: "مقالات", href: "/blog" },
-    { title: "  ارزیابی شدت علائم", href: "/painform" },
+  { title: "  ارزیابی شدت علائم", href: "/assessment" },
   { title: "تماس با ما", href: "/contact" },
-
 ];
 
 export default function Navbar() {
@@ -44,7 +43,6 @@ export default function Navbar() {
               <span className="text-[10px] font-medium text-[#8b9472] tracking-[0.1em] -mt-1">
                 سپیده مصری پور
               </span>
-           
             </div>
           </div>
 

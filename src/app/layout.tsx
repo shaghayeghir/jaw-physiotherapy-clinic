@@ -23,9 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${vazirmatn.variable} font-sans antialiased`}>
+      <body
+        className={`${vazirmatn.variable} font-sans antialiased min-h-screen flex flex-col`}
+      >
         <Navbar />
-        {children}
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>
