@@ -27,7 +27,9 @@ export default function RootLayout({
         className={`${vazirmatn.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
-        <main className="flex-grow">{children}</main>
+         <main className="h-[calc(100vh-155px)] overflow-y-auto">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

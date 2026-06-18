@@ -5,49 +5,49 @@ export const assessments = [
     description:
       "",
     icon: <Activity className="w-5 h-5" />,
-    href: "/assessment/gad-7",
+    href: "/assessment/Pain-assessment",
   },
   {
     title: "مقیاس درجه بندی درد مزمن",
     description:
       "",
     icon: <Brain className="w-5 h-5" />,
-    href: "/assessment/phq-9",
+    href: "/assessment/Chronic-Pain-Scale",
   },
   {
     title: "مقیاس محدودیت عملکردی فک",
     description:
       "",
     icon: <HeartPulse className="w-5 h-5" />,
-    href: "/assessment/pain-assessment",
+    href: "/assessment/Jaw-Functional-Limitation",
   },
     {
     title: " پرسشنامه سلامت بیمار",
     description:
       "",
     icon: <ScanHeart className="w-5 h-5" />,
-    href: "/assessment/gad-8",
+    href: "/assessment/Patient-health",
   },
   {
     title: "اختلال اضطراب عمومی",
     description:
       "",
     icon: <Stethoscope className="w-5 h-5" />,
-    href: "/assessment/phq-10",
+    href: "/assessment/Generalized-anxiety",
   },
   {
     title: "پرسشنامه سلامت بیمار با نشانه‌های فیزیکی",
     description:
       "",
     icon: <ClipboardPlus className="w-5 h-5" />,
-    href: "/assessment/pain",
+    href: "/assessment/Patient-Health-Physical",
   },
   {
     title: "چک‌ لیست رفتار دهان و دندان",
     description:
       "",
     icon: <HeartMinus className="w-5 h-5" />,
-    href: "/assessment/phq-11",
+    href: "/assessment/Oral-Behavior",
   },
   // بقیه دیتای ...
 ];

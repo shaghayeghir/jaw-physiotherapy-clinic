@@ -2,7 +2,7 @@ import { Globe, Phone, MapPin, WavesVertical } from "lucide-react"; // استف�
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#c5a49a] py-3 px-4 sm:px-8 mt-10">
+    <footer className="w-full bg-[#c5a49a] py-3 px-4 sm:px-8 mt-1">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row flex-wrap items-center justify-between gap-4 text-white/90 text-[13px] font-medium">
         {/* بخش وب‌سایت */}
         <div className="flex items-center gap-2">
