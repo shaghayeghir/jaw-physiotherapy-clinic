@@ -19,7 +19,7 @@ const symptoms = [
   {
     title: " درد گردن و کتف",
     description: "گرفتگی، درد یا احساس خستگی در عضلات گردن، کتف و شانه",
-    image: "/icons/benefit/Shoulder_Pain.png",
+    image: "/icons/benefit/Shoulder_Pain-icon.png",
   },
   {
     title: " درد دندان",
@@ -30,7 +30,7 @@ const symptoms = [
     title: "وضعیت بدنی نامناسب",
     description:
       "جلو آمدن سر، گرد شدن شانه‌ها و وضعیت نامناسب گردن که می‌تواند با درد فک، گردن و سردرد همراه باشد",
-    image: "/icons/benefit/Poor_Posture.png",
+    image: "/icons/benefit/poor-posture-icon.png",
   },
   {
     title: "صدای مفصل",
@@ -41,25 +41,25 @@ const symptoms = [
   {
     title: "محدودیت باز شدن دهان",
     description: "ناتوانی در بازکردن دهان به اندازه سه عرض انگشت دست خود فرد",
-    image: "/icons/benefit/Jaw_deviation.png",
+    image: "/icons/benefit/Jaw_deviation-icon.png",
   },
   {
     title: "قفل شدن فک",
     description: "گیر کردن فک در وضعیت باز یا بسته",
-    image: "/icons/benefit/LockedـJaw.png",
+    image: "/icons/benefit/LockedـJaw-icon.png",
   },
   {
     title: "انحراف فک",
     description:
       "حرکت فک به یک سمت در هنگام باز کردن دهان. عدم قرینگی در بازشدن دهان ",
-    image: "/icons/benefit/Headache.png",
+    image: "/icons/benefit/Deviation-the-jaw.png",
   },
 
   {
     title: "مشکل در جویدن",
     description:
       "دشواری در خوردن غذاهای سفت، بزرگ یا چسبنده، کاهش قدرت گاز گرفتن و خستگی فک حین جویدن غذا",
-    image: "/icons/benefit/Headache.png",
+    image: "/icons/benefit/Difficulty-Chewing.png",
   },
   {
     title: "دندان‌قروچه",
@@ -74,17 +74,17 @@ const symptoms = [
   {
     title: "وزوز گوش ",
     description: "شنیدن صداهایی مانند زنگ، سوت، صدای هوا یا وزوز در گوش",
-    image: "/icons/benefit/Tinnitus.png",
+    image: "/icons/benefit/Tinnitus-icon.png",
   },
   {
     title: "پری گوش",
     description: "احساس فشار یا کیپ شدن گوش بدون وجود مشکل واضح در معاینه گوش",
-    image: "/icons/benefit/Headache.png",
+    image: "/icons/benefit/Ear_Fullness_icon.png",
   },
   {
     title: "سرگیجه",
     description: "احساس چرخش، سبکی سر یا ناپایدار",
-    image: "/icons/benefit/Headache.png",
+    image: "/icons/benefit/dizziness.png",
   },
 ];
 
