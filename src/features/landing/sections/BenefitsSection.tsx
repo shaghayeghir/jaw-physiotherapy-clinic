@@ -23,7 +23,7 @@ const symptoms = [
   {
     title: " درد گردن و کتف",
     description: "گرفتگی، درد یا احساس خستگی در عضلات گردن، کتف و شانه",
-    image: "/icons/benefit/Shoulder_Pain-icon.png",
+    image: "/icons/benefit/Shoulder_Pain.png",
     link: "/assessment/Pain-assessment",
   },
   {
