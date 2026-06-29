@@ -1,4 +1,4 @@
-import AssessmentPage from "@/features/assessment/components/assessmentPage";
+import AssessmentPage from "@/features/assessment/components/AssessmentPage";
 
 export default function Assessment() {
   return <AssessmentPage />;

@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { title: "خدمات", href: "/services" },
   { title: "مقالات", href: "/blog" },
   { title: "  ارزیابی شدت علائم", href: "/assessment" },
-  { title: "تماس با ما", href: "/contact" },
+  // { title: "تماس با ما", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -27,7 +27,7 @@ export default function Navbar() {
             {/* آیکون لوگو */}
             <div className="relative h-15 w-15 bg-[#8b9472] rounded-full flex items-center justify-center overflow-hidden shrink-0">
               <Image
-                src="/icons/logo/sepide_png_sefid.png"
+                src="/icons/logo/sepide_sefid.png"
                 alt="logo"
                 fill
                 priority
