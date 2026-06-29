@@ -1,81 +1,80 @@
-"use client"
+"use client";
 
-import { useMemo, useState } from "react"
+import { useMemo, useState } from "react";
 import type {
   Question,
   Questionnaire,
-} from "@/features/assessment/data/questionnaires"
+} from "@/features/assessment/data/questionnaires";
 import {
   calculateAssessmentResult,
   type AssessmentResult,
-} from "@/features/assessment/utils/calculateResult"
+} from "@/features/assessment/utils/calculateResult";
 
 type QuestionnaireEngineProps = {
-  slug: string
-  questionnaire: Questionnaire
-}
+  slug: string;
+  questionnaire: Questionnaire;
+};
 
 export default function QuestionnaireEngine({
   slug,
   questionnaire,
 }: QuestionnaireEngineProps) {
-  const [answers, setAnswers] = useState<Record<string, number>>({})
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [result, setResult] = useState<AssessmentResult | null>(null)
+  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [result, setResult] = useState<AssessmentResult | null>(null);
 
   const questions = useMemo(
     () => questionnaire.questions,
-    [questionnaire.questions]
-  )
+    [questionnaire.questions],
+  );
 
-  const totalQuestions = questions.length
-  const currentQuestion = questions[currentIndex]
+  const totalQuestions = questions.length;
+  const currentQuestion = questions[currentIndex];
 
-  const currentAnswer = answers[currentQuestion.id]
-  const hasCurrentAnswer = currentAnswer !== undefined
+  const currentAnswer = answers[currentQuestion.id];
+  const hasCurrentAnswer = currentAnswer !== undefined;
 
-  const answeredQuestions = Object.keys(answers).length
-  const isFirstQuestion = currentIndex === 0
-  const isLastQuestion = currentIndex === totalQuestions - 1
+  const answeredQuestions = Object.keys(answers).length;
+  const isFirstQuestion = currentIndex === 0;
+  const isLastQuestion = currentIndex === totalQuestions - 1;
 
-  const progress = Math.round(((currentIndex + 1) / totalQuestions) * 100)
+  const progress = Math.round(((currentIndex + 1) / totalQuestions) * 100);
 
   const handleAnswer = (questionId: string, value: number) => {
     setAnswers((prev) => ({
       ...prev,
       [questionId]: value,
-    }))
+    }));
 
-    if (result) setResult(null)
-  }
+    if (result) setResult(null);
+  };
 
   const goNext = () => {
- 
     if (isLastQuestion) {
-      const nextResult = calculateAssessmentResult(slug, answers)
-      setResult(nextResult)
-      return
+      const nextResult = calculateAssessmentResult(slug, answers);
+      setResult(nextResult);
+      return;
     }
 
-    setCurrentIndex((prev) => prev + 1)
-  }
+    setCurrentIndex((prev) => prev + 1);
+  };
 
   const goPrevious = () => {
-    if (isFirstQuestion) return
-    setCurrentIndex((prev) => prev - 1)
-    setResult(null)
-  }
+    if (isFirstQuestion) return;
+    setCurrentIndex((prev) => prev - 1);
+    setResult(null);
+  };
 
   const restartAssessment = () => {
-    setAnswers({})
-    setCurrentIndex(0)
-    setResult(null)
-  }
+    setAnswers({});
+    setCurrentIndex(0);
+    setResult(null);
+  };
 
   return (
     <section
       dir="rtl"
-      className="relative h-screen overflow-hidden px-4 py-4 text-[#2d2722] sm:px-6"
+      className="relative min-h-screen px-4 py-4 text-[#2d2722] sm:px-6"
     >
       <BackgroundDecor />
 
@@ -99,7 +98,7 @@ export default function QuestionnaireEngine({
                 totalQuestions={totalQuestions}
                 question={currentQuestion}
                 value={currentAnswer}
-                onChange={(value:any) =>
+                onChange={(value: any) =>
                   handleAnswer(currentQuestion.id, value)
                 }
               />
@@ -115,12 +114,10 @@ export default function QuestionnaireEngine({
           </>
         )}
 
-        {result && (
-          <ResultCard result={result} onRestart={restartAssessment} />
-        )}
+        {result && <ResultCard result={result} onRestart={restartAssessment} />}
       </div>
     </section>
-  )
+  );
 }
 
 function HeaderCard({
@@ -164,9 +161,7 @@ function HeaderCard({
             <span className="text-lg text-[#9b8068]">/{totalQuestions}</span>
           </p>
 
-          <p className="text-xs text-[#74685f]">
-            {answeredQuestions} پاسخ
-          </p>
+          <p className="text-xs text-[#74685f]">{answeredQuestions} پاسخ</p>
         </div>
       </div>
 
@@ -184,7 +179,7 @@ function HeaderCard({
         </div>
       </div>
     </header>
-  )
+  );
 }
 
 function QuestionCard({
@@ -248,14 +243,14 @@ function QuestionCard({
         )}
       </div>
     </article>
-  )
+  );
 }
 
 function RadioInput({ options, value, onChange }: any) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
       {options.map((option: any) => {
-        const selected = value === option.value
+        const selected = value === option.value;
 
         return (
           <button
@@ -270,14 +265,14 @@ function RadioInput({ options, value, onChange }: any) {
           >
             {option.label}
           </button>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
 
 function ScaleInput({ min, max, step = 1, value, onChange }: any) {
-  const currentValue = value ?? min
+  const currentValue = value ?? min;
 
   return (
     <div className="rounded-[24px] border border-white/70 bg-white/55 p-5">
@@ -301,7 +296,7 @@ function ScaleInput({ min, max, step = 1, value, onChange }: any) {
         className="w-full accent-[#8b9472]"
       />
     </div>
-  )
+  );
 }
 
 function NumberInput({ min, max, placeholder, value, onChange }: any) {
@@ -315,7 +310,7 @@ function NumberInput({ min, max, placeholder, value, onChange }: any) {
       onChange={(e) => onChange(Number(e.target.value))}
       className="w-full rounded-2xl border border-white/70 bg-white/65 px-4 py-4 text-right text-base font-bold text-[#302922] outline-none focus:border-[#d59a8f]"
     />
-  )
+  );
 }
 
 function NavigationButtons({
@@ -344,7 +339,7 @@ function NavigationButtons({
         {isLastQuestion ? "مشاهده نتیجه" : "سؤال بعدی"}
       </button>
     </div>
-  )
+  );
 }
 
 function ResultCard({ result, onRestart }: any) {
@@ -357,13 +352,13 @@ function ResultCard({ result, onRestart }: any) {
       <p className="mt-3 text-sm text-[#65594f]">{result.message}</p>
 
       <button
-        onClick={()=>{}}
+        onClick={() => {}}
         className="mt-5 rounded-full bg-[#8b9472] px-6 py-3 text-white font-bold"
       >
-      تماس با سپیده مصری پور
+        تماس با سپیده مصری پور
       </button>
     </section>
-  )
+  );
 }
 
 function BackgroundDecor() {
@@ -372,5 +367,5 @@ function BackgroundDecor() {
       <div className="pointer-events-none absolute -right-28 top-10 h-80 w-80 rounded-full bg-[#d59a8f]/35 blur-3xl" />
       <div className="pointer-events-none absolute -left-24 top-72 h-96 w-96 rounded-full bg-[#8b9472]/35 blur-3xl" />
     </>
-  )
+  );
 }
