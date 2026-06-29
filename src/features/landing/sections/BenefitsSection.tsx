@@ -51,7 +51,7 @@ const symptoms = [
   {
     title: "انحراف فک",
     description:
-      "حرکت فک به یک سمت در هنگام باز کردن دهان. عدم قرینگی در بازشدن دهان ",
+      "حرکت فک به یک سمت در هنگام باز کردن دهان\n عدم قرینگی در بازشدن دهان ",
     image: "/icons/benefit/Deviation-the-jaw.png",
   },
 
@@ -63,7 +63,7 @@ const symptoms = [
   },
   {
     title: "دندان‌قروچه",
-    description: "12.	دندان‌قروچه و فشردن دندان ها روی هم یا احساس فشار در فک",
+    description: "	دندان‌قروچه و فشردن دندان ها روی هم یا احساس فشار در فک",
     image: "/icons/benefit/Teeth_grinding.png",
   },
   {
