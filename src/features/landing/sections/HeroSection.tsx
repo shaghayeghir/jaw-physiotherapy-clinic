@@ -69,6 +69,7 @@ export default function HeroSection() {
                 <Button
                   size="lg"
                   className="bg-[#8b9472] text-white hover:bg-[#76805d]"
+                  href="/assessment"
                 >
                   شروع ارزیابی آنلاین
                 </Button>
