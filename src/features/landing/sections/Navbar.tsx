@@ -27,7 +27,7 @@ export default function Navbar() {
             {/* آیکون لوگو */}
             <div className="relative h-15 w-15 bg-[#8b9472] rounded-full flex items-center justify-center overflow-hidden shrink-0">
               <Image
-                src="/icons/logo/sepide_sefid.png"
+                src="/icons/Logo/sepide_sefid.png"
                 alt="logo"
                 fill
                 priority
