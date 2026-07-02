@@ -24,7 +24,6 @@ const symptoms = [
     title: " درد گردن و کتف",
     description: "گرفتگی، درد یا احساس خستگی در عضلات گردن، کتف و شانه",
     image: "/icons/benefit/Shoulder_Pain.png",
-    link: "/assessment/Pain-assessment",
   },
   {
     title: " درد دندان",
@@ -46,7 +45,7 @@ const symptoms = [
   {
     title: "محدودیت باز شدن دهان",
     description: "ناتوانی در بازکردن دهان به اندازه سه عرض انگشت دست خود فرد",
-    image: "/icons/benefit/Jaw_deviation-icon.png",
+    image: "/icons/benefit/Jaw_deviation.png",
   },
   {
     title: "قفل شدن فک",
@@ -57,7 +56,7 @@ const symptoms = [
     title: "انحراف فک",
     description:
       "حرکت فک به یک سمت در هنگام باز کردن دهان\n عدم قرینگی در بازشدن دهان ",
-    image: "/icons/benefit/Deviation-the-jaw.png",
+    image: "/icons/benefit/Deviation-jaw.png",
   },
 
   {
