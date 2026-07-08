@@ -4,10 +4,8 @@ import HeroSection from "@/features/landing/sections/HeroSection";
 export default function Page() {
   return (
     <>
-   
       <HeroSection />
       <BenefitsSection />
-      
     </>
   );
 }

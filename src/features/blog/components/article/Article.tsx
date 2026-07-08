@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { blogPosts } from "../../blogData/blogData";
 import ImageGallery from "./components/imageGallery/ImageGallery";
 
-
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -83,10 +82,7 @@ export default async function Article({ params }: Props) {
             </dl>
           </div>
 
-          <ImageGallery
-            images={post.contentImage ?? []}
-            title={post.title}
-          />
+          <ImageGallery images={post.contentImage ?? []} title={post.title} />
         </aside>
       </article>
     </main>

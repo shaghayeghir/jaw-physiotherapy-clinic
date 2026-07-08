@@ -26,12 +26,7 @@ export default function ImageGallery({ images, title }: Props) {
                 onClick={() => setSelectedImage(src)}
                 className="relative aspect-square cursor-pointer overflow-hidden rounded-2xl border border-[#eadfda] bg-[#f7f4f1] transition-opacity hover:opacity-80"
               >
-                <Image
-                  src={src}
-                  alt={title}
-                  fill
-                  className="object-cover"
-                />
+                <Image src={src} alt={title} fill className="object-cover" />
               </button>
             ))}
           </div>

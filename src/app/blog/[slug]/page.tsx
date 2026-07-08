@@ -1,4 +1,3 @@
-
 import { blogPosts } from "@/features/blog/blogData/blogData";
 import { notFound } from "next/navigation";
 import Article from "@/features/blog/components/article/Article";
