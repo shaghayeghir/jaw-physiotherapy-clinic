@@ -35,11 +35,11 @@ export const BlogList = () => {
         </div>
 
         {/* دکمه بارگذاری بیشتر (اختیاری) */}
-        <div className="mt-16 text-center">
+        {/* <div className="mt-16 text-center">
           <button className="px-10 py-4 bg-[#495144] text-white rounded-full font-bold text-sm hover:bg-[#8b9472] transition-all shadow-lg shadow-[#495144]/20">
             مشاهده مقالات قدیمی‌تر
           </button>
-        </div>
+        </div> */}
       </div>
     </main>
   );

@@ -31,5 +31,5 @@ export interface BlogPost {
     conclusion?: string;
   };
 
-  patientExperience: PatientExperience;
+
 }
