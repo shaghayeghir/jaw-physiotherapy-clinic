@@ -1,17 +1,15 @@
-import { Question } from "../data/questionnaires"
+import { Question } from "../data/questionnaires";
 
 export default function QuestionStep({
   question,
   onSelect,
 }: {
-  question: Question
-  onSelect: (value: number) => void
+  question: Question;
+  onSelect: (value: number) => void;
 }) {
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-6">
-        {question.text}
-      </h2>
+      <h2 className="text-xl font-semibold mb-6">{question.text}</h2>
 
       {question.type === "radio" && (
         <div className="space-y-3">
@@ -31,7 +29,7 @@ export default function QuestionStep({
         <div className="flex gap-2">
           {Array.from(
             { length: question.max - question.min + 1 },
-            (_, i) => i + question.min
+            (_, i) => i + question.min,
           ).map((num) => (
             <button
               key={num}
@@ -52,5 +50,5 @@ export default function QuestionStep({
         />
       )}
     </div>
-  )
+  );
 }
