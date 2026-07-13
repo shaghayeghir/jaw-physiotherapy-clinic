@@ -7,12 +7,12 @@ export function ResultCard({ result, onRestart }: any) {
 
       <p className="mt-3 text-sm text-[#65594f]">{result.message}</p>
 
-      <button
-        onClick={() => {}}
-        className="mt-5 rounded-full bg-[#8b9472] px-6 py-3 text-white font-bold"
+      <a
+        href="tel:+989132702137"
+        className="inline-flex items-center justify-center rounded-2xl bg-[#5f6f52] px-5 py-3 text-white"
       >
         تماس با سپیده مصری پور
-      </button>
+      </a>
     </section>
   );
 }

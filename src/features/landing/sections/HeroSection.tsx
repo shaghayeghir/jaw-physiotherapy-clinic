@@ -62,9 +62,9 @@ export default function HeroSection() {
                 شده
               </p>
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-base leading-7 text-[#d59a8f] sm:text-lg">
-              آرامش جسم تو حس خوب من ❤
+                آرامش جسم تو حس خوب من ❤
               </p>
-           
+
               <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
                 <Button
                   size="lg"
@@ -73,13 +73,12 @@ export default function HeroSection() {
                 >
                   شروع ارزیابی آنلاین
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-[#caa497] dark:border-[#caa497] bg-transparent text-[#9d6257] dark:text-[#9d6257] hover:bg-[#f7ece7] whitespace-nowrap"
+                <a
+                  href="tel:+989132702137"
+                  className="inline-flex h-11 items-center justify-center rounded-md border border-[#caa497] bg-transparent px-8 text-sm font-medium text-[#9d6257] transition-colors hover:bg-[#f7ece7] whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   تماس با سپیده مصری پور
-                </Button>
+                </a>
               </div>
             </div>
 
