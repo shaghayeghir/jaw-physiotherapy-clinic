@@ -1,4 +1,3 @@
-// src/app/opengraph-image.tsx
 import { ImageResponse } from "next/og";
 
 export const size = {
@@ -8,7 +7,16 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+async function loadFont(url: string) {
+  return fetch(new URL(url, import.meta.url)).then((res) =>
+    res.arrayBuffer()
+  );
+}
+
+export default async function OpenGraphImage() {
+  const regular = await loadFont("./fonts/Vazirmatn-Regular.ttf");
+  const bold = await loadFont("./fonts/Vazirmatn-Bold.ttf");
+
   return new ImageResponse(
     (
       <div
@@ -19,38 +27,66 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "linear-gradient(135deg, #fcf9f6 0%, #f5ece6 100%)",
-          color: "#6b7280",
-          fontSize: 48,
-          fontWeight: 700,
-          padding: "60px",
+          background:
+            "linear-gradient(135deg, #fcf9f6 0%, #f6efe9 45%, #efe4da 100%)",
+          color: "#5f6b53",
           textAlign: "center",
+          padding: "64px",
+          fontFamily: "Vazirmatn",
         }}
       >
         <div
           style={{
-            fontSize: 34,
+            fontSize: 30,
+            fontWeight: 700,
             color: "#8b9472",
-            marginBottom: 20,
+            marginBottom: 24,
+            letterSpacing: "-0.02em",
           }}
         >
-          کلینیک تخصصی فیزیوتراپی فک
+          کلینیک تخصصی فیزیوتراپی فک و TMJ
         </div>
 
         <div
           style={{
-            fontSize: 56,
-            color: "#5f6b53",
-            maxWidth: "900px",
-            lineHeight: 1.4,
+            fontSize: 58,
+            fontWeight: 800,
+            lineHeight: 1.35,
+            maxWidth: 960,
+            color: "#4f5b45",
           }}
         >
-          ارزیابی و درمان اختلالات فک، درد و TMJ
+          ارزیابی و درمان درد فک، کلیک مفصل و اختلالات TMJ
+        </div>
+
+        <div
+          style={{
+            fontSize: 26,
+            fontWeight: 500,
+            marginTop: 28,
+            color: "#7c8570",
+          }}
+        >
+          نوبت‌دهی و مشاوره تخصصی
         </div>
       </div>
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "Vazirmatn",
+          data: regular,
+          weight: 400,
+          style: "normal",
+        },
+        {
+          name: "Vazirmatn",
+          data: bold,
+          weight: 700,
+          style: "normal",
+        },
+      ],
     }
   );
 }
