@@ -9,12 +9,8 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function OpenGraphImage() {
-  const regularFont = await readFile(
-    new URL("./fonts/Vazirmatn-Regular.ttf", import.meta.url)
-  );
-
-  const boldFont = await readFile(
-    new URL("./fonts/Vazirmatn-Bold.ttf", import.meta.url)
+  const vazirmatnFont = await readFile(
+    new URL("./font/Vazirmatn-VariableFont_wght.ttf", import.meta.url)
   );
 
   return new ImageResponse(
@@ -38,7 +34,7 @@ export default async function OpenGraphImage() {
         <div
           style={{
             fontSize: 30,
-            fontWeight: 700,
+            fontWeight: 600,
             color: "#8b9472",
             marginBottom: 24,
           }}
@@ -48,8 +44,8 @@ export default async function OpenGraphImage() {
 
         <div
           style={{
-            fontSize: 58,
-            fontWeight: 700,
+            fontSize: 56,
+            fontWeight: 800,
             lineHeight: 1.35,
             maxWidth: 960,
             color: "#4f5b45",
@@ -60,8 +56,8 @@ export default async function OpenGraphImage() {
 
         <div
           style={{
-            fontSize: 26,
-            fontWeight: 400,
+            fontSize: 24,
+            fontWeight: 500,
             marginTop: 28,
             color: "#7c8570",
           }}
@@ -75,14 +71,8 @@ export default async function OpenGraphImage() {
       fonts: [
         {
           name: "Vazirmatn",
-          data: regularFont,
+          data: vazirmatnFont,
           weight: 400,
-          style: "normal",
-        },
-        {
-          name: "Vazirmatn",
-          data: boldFont,
-          weight: 700,
           style: "normal",
         },
       ],
