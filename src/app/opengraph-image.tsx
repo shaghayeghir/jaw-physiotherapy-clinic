@@ -34,7 +34,7 @@ export default function OpenGraphImage() {
             marginBottom: 20,
           }}
         >
-          TMJ Physiotherapy Clinic
+          کلینیک تخصصی فیزیوتراپی فک
         </div>
 
         <div
@@ -45,7 +45,7 @@ export default function OpenGraphImage() {
             lineHeight: 1.4,
           }}
         >
-          Assessment and treatment of jaw pain and TMJ disorders
+          ارزیابی و درمان اختلالات فک، درد و TMJ
         </div>
       </div>
     ),
