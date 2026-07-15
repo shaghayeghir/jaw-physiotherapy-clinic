@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { ImageResponse } from "next/og";
 
 export const size = {
@@ -7,15 +8,14 @@ export const size = {
 
 export const contentType = "image/png";
 
-async function loadFont(url: string) {
-  return fetch(new URL(url, import.meta.url)).then((res) =>
-    res.arrayBuffer()
-  );
-}
-
 export default async function OpenGraphImage() {
-  const regular = await loadFont("./fonts/Vazirmatn-Regular.ttf");
-  const bold = await loadFont("./fonts/Vazirmatn-Bold.ttf");
+  const regularFont = await readFile(
+    new URL("./fonts/Vazirmatn-Regular.ttf", import.meta.url)
+  );
+
+  const boldFont = await readFile(
+    new URL("./fonts/Vazirmatn-Bold.ttf", import.meta.url)
+  );
 
   return new ImageResponse(
     (
@@ -41,7 +41,6 @@ export default async function OpenGraphImage() {
             fontWeight: 700,
             color: "#8b9472",
             marginBottom: 24,
-            letterSpacing: "-0.02em",
           }}
         >
           کلینیک تخصصی فیزیوتراپی فک و TMJ
@@ -50,7 +49,7 @@ export default async function OpenGraphImage() {
         <div
           style={{
             fontSize: 58,
-            fontWeight: 800,
+            fontWeight: 700,
             lineHeight: 1.35,
             maxWidth: 960,
             color: "#4f5b45",
@@ -62,7 +61,7 @@ export default async function OpenGraphImage() {
         <div
           style={{
             fontSize: 26,
-            fontWeight: 500,
+            fontWeight: 400,
             marginTop: 28,
             color: "#7c8570",
           }}
@@ -76,13 +75,13 @@ export default async function OpenGraphImage() {
       fonts: [
         {
           name: "Vazirmatn",
-          data: regular,
+          data: regularFont,
           weight: 400,
           style: "normal",
         },
         {
           name: "Vazirmatn",
-          data: bold,
+          data: boldFont,
           weight: 700,
           style: "normal",
         },
