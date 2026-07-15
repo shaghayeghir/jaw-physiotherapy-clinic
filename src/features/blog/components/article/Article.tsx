@@ -3,9 +3,26 @@
 import { notFound } from "next/navigation";
 import { blogPosts } from "../../blogData/blogData";
 import ImageGallery from "./components/imageGallery/ImageGallery";
+import { generateBlogMetadata } from "@/seo/blogMetadata";
+import { Metadata } from "next";
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+
+  // پیدا کردن مقاله بر اساس slug
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) return {};
+
+  // تولید متادیتا
+  return generateBlogMetadata({
+    title: post.title,
+    description: post.content?.intro || "",
+    slug: post.slug,
+    image: post.image || post.contentImage?.[0],
+  });
 }
 
 export default async function Article({ params }: Props) {

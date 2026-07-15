@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { assessments } from "../data/assessmentsData";
+import { pageMetadata } from "@/seo/pageMetadata"; 
 
+export const metadata = pageMetadata.assessment;
 export default function AssessmentPage() {
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden">

@@ -1,7 +1,9 @@
 // components/sections/AboutMeSection.tsx
 import Image from "next/image";
 import { GraduationCap, Award, HeartPulse, MapPin } from "lucide-react";
+import { pageMetadata } from "@/seo/pageMetadata";
 
+export const metadata = pageMetadata.about;
 export function AboutMeSection() {
   return (
     <section
