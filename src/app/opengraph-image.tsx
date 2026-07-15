@@ -1,4 +1,3 @@
-import { readFile } from "node:fs/promises";
 import { ImageResponse } from "next/og";
 
 export const size = {
@@ -8,11 +7,7 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default async function OpenGraphImage() {
-  const vazirmatnFont = await readFile(
-    new URL("./font/Vazirmatn-VariableFont_wght.ttf", import.meta.url)
-  );
-
+export default function OpenGraphImage() {
   return new ImageResponse(
     (
       <div
@@ -20,62 +15,17 @@ export default async function OpenGraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
           alignItems: "center",
-          background:
-            "linear-gradient(135deg, #fcf9f6 0%, #f6efe9 45%, #efe4da 100%)",
-          color: "#5f6b53",
-          textAlign: "center",
-          padding: "64px",
-          fontFamily: "Vazirmatn",
+          justifyContent: "center",
+          background: "#f7f1ec",
+          color: "#4f5b45",
+          fontSize: 60,
+          fontWeight: 700,
         }}
       >
-        <div
-          style={{
-            fontSize: 30,
-            fontWeight: 600,
-            color: "#8b9472",
-            marginBottom: 24,
-          }}
-        >
-          کلینیک تخصصی فیزیوتراپی فک و TMJ
-        </div>
-
-        <div
-          style={{
-            fontSize: 56,
-            fontWeight: 800,
-            lineHeight: 1.35,
-            maxWidth: 960,
-            color: "#4f5b45",
-          }}
-        >
-          ارزیابی و درمان درد فک، کلیک مفصل و اختلالات TMJ
-        </div>
-
-        <div
-          style={{
-            fontSize: 24,
-            fontWeight: 500,
-            marginTop: 28,
-            color: "#7c8570",
-          }}
-        >
-          نوبت‌دهی و مشاوره تخصصی
-        </div>
+        TMJ Physiotherapy Clinic
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        {
-          name: "Vazirmatn",
-          data: vazirmatnFont,
-          weight: 400,
-          style: "normal",
-        },
-      ],
-    }
+    size
   );
 }
