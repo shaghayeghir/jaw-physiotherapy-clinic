@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="p-1.5 border border-white/30 rounded-full">
             <Globe size={14} className="text-white" />
           </div>
-          <span className="ltr tracking-wide">www.tmd_clinic.ir</span>
+          <span className="ltr tracking-wide">www.tmd-clinic.ir</span>
         </div>
 
         {/* بخش تلفن */}
