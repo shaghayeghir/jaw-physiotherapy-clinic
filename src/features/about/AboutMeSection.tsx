@@ -1,6 +1,6 @@
 // components/sections/AboutMeSection.tsx
 import Image from "next/image";
-import { GraduationCap, Award, HeartPulse, MapPin } from "lucide-react";
+import { GraduationCap, Award, HeartPulse, MapPin, MessageCircle } from "lucide-react";
 import { pageMetadata } from "@/seo/pageMetadata";
 
 export const metadata = pageMetadata.about;
@@ -70,20 +70,25 @@ export function AboutMeSection() {
           </div>
 
           <h2 className="text-xl font-bold leading-tight text-[#495144] sm:text-4xl lg:text-2xl">
-            همراه شما در مسیر کاهش درد و بهبود عملکرد فک
+            همراه شما در مسیر کاهش درد و بازگشت به عملکرد طبیعی
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-8 text-[#8c857b] sm:text-lg">
-            من فیزیوتراپیست هستم و با تمرکز بر درمان اختلالات مفصل گیجگاهی-فکی
-            (TMD)، دردهای ناحیه فک، گردن، صورت و علائم همراه مانند وزوز گوش را
-            با رویکردی علمی و دقیق ارزیابی و درمان می‌کنم.
+            من سپیده مصری‌پور هستم؛ فیزیوتراپیست با تمرکز بر اختلالات مفصل
+            فکی–گیجگاهی (TMJ) و دردهای ناحیه سر و گردن در دوره کارشناسی ارشد،
+            تمرکز پژوهشی من بر بیماران با اختلالات مفصل فکی–گیجگاهی متمرکز بوده
+            و بخش عمده فعالیت بالینی و مطالعاتم را نیز به ارزیابی و درمان این
+            گروه از بیماران اختصاص داده‌ام. این مسیر به من آموخته است که درمان
+            مؤثر، تنها به کاهش علائم محدود نمی‌شود؛ بلکه با شناخت دقیق علت
+            اختلال، درک شرایط هر مراجع و طراحی برنامه درمانی، متناسب با نیازهای
+            او آغاز می‌شود.
           </p>
 
-          <p className="mt-4 max-w-2xl text-base leading-8 text-[#8c857b] sm:text-lg">
+          {/* <p className="mt-4 max-w-2xl text-base leading-8 text-[#8c857b] sm:text-lg">
             هدف من این است که با ترکیب دانش تخصصی، تجربه بالینی و برنامه درمانی
             شخصی‌سازی‌شده، به شما کمک کنم تا دوباره بدون درد غذا بجوید، صحبت
             کنید و کیفیت زندگی بهتری داشته باشید.
-          </p>
+          </p> */}
 
           {/* ویژگی‌ها */}
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -109,10 +114,16 @@ export function AboutMeSection() {
           </div>
 
           {/* دکمه */}
-          <div className="mt-10">
-            <button className="rounded-full bg-[#d59a8f] px-6 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-[#c8897e] hover:shadow-[#d59a8f]/30">
-              دریافت مشاوره
-            </button>
+             <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
+         <a
+              href="https://wa.me/989132702137"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-[#d59a8f] text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-[#854f45] transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>مشاوره در واتساپ</span>
+            </a>
           </div>
         </div>
       </div>

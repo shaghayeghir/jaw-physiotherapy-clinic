@@ -1,11 +1,10 @@
 // components/sections/BenefitsSection.tsx
-import * as React from "react";
+
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import Image from "next/image";
 import Link from "next/link";
 import { ClipboardPenLine } from "lucide-react";
-import { link } from "fs";
 
 const symptoms = [
   {
@@ -13,7 +12,6 @@ const symptoms = [
     description:
       "درد یا احساس سنگینی یا گرفتگی در اطراف مفصل فک، گونه‌ها، اطراف گوش، زیر فک، زاویه فک و گاهی ناحیه گلو",
     image: "/icons/benefit/Jaw_Pain.png",
-    link: "/assessment/Pain-assessment",
   },
   {
     title: "سردرد",
@@ -29,12 +27,14 @@ const symptoms = [
     title: " درد دندان",
     description: "درد دندان بدون علت دندانی",
     image: "/icons/benefit/Toothache.png",
+    link:"/blog/nonodontogenic-tooth-pain"
   },
   {
     title: "وضعیت بدنی نامناسب",
     description:
       "جلو آمدن سر، گرد شدن شانه‌ها و وضعیت نامناسب گردن که می‌تواند با درد فک، گردن و سردرد همراه باشد",
     image: "/icons/benefit/poor-posture.png",
+    link:"/blog/neck-head-posture-jaw-pain"
   },
   {
     title: "صدای مفصل",
@@ -58,19 +58,16 @@ const symptoms = [
       "حرکت فک به یک سمت در هنگام باز کردن دهان\n عدم قرینگی در بازشدن دهان ",
     image: "/icons/benefit/Deviation-jaw.png",
   },
-
   {
     title: "مشکل در جویدن",
     description:
       "دشواری در خوردن غذاهای سفت، بزرگ یا چسبنده، کاهش قدرت گاز گرفتن و خستگی فک حین جویدن غذا",
     image: "/icons/benefit/Difficulty-Chewing.png",
-    link: "/assessment/Jaw-Functional-Limitation",
   },
   {
     title: "دندان‌قروچه",
     description: "	دندان‌قروچه و فشردن دندان ها روی هم یا احساس فشار در فک",
     image: "/icons/benefit/Teeth_grinding.png",
-    link: "/assessment/Oral-Behavior",
   },
   {
     title: "تغییر جفت شدن دندان‌ها ",
@@ -105,14 +102,15 @@ export function BenefitsSection() {
         />
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-          {symptoms.map((item, idx) => (
-            <div
-              key={idx}
-              // اضافه کردن 'relative' برای اینکه دکمه بتواند نسبت به این کارت معلق شود
-              className="group relative flex flex-col items-center justify-start rounded-[2.5rem] border border-[#f1e6db] bg-[#dfe2d8] p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-[#d59a8f]/5"
-            >
-              {/* محتوای اصلی کارت */}
+          {symptoms.map((item, idx) => {
+            // استایل‌های پایه کارت
+            const cardClasses =
+              "group relative flex flex-col items-center justify-start rounded-[2.5rem] border border-[#f1e6db] bg-[#dfe2d8] p-6 text-center transition-all duration-300 hover:bg-white hover:shadow-xl hover:shadow-[#d59a8f]/5 w-full";
+
+            // محتوای داخلی کارت
+            const cardContent = (
               <div className="flex flex-col items-center w-full">
+                {/* بخش تصویر آیکون */}
                 <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-sm transition-transform group-hover:scale-110">
                   <Image
                     src={item.image}
@@ -122,15 +120,17 @@ export function BenefitsSection() {
                     className="object-contain"
                   />
                 </div>
-     {item.link && (
-                <Link
-                  href={item.link}
-                  className="absolute top-4 left-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#d59a8f] text-white shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:bg-[#c4897e] group-hover:shadow-[#d59a8f]/40"
-                  title="شروع آزمون"
-                >
-                  <ClipboardPenLine size={16} />
-                </Link>
-              )}
+
+                {/* آیکون وضعیت آزمون (اگر لینک داشته باشد) */}
+                {item.link && (
+                  <div
+                    className="absolute top-4 left-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#d59a8f] text-white shadow-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#c4897e] group-hover:shadow-[#d59a8f]/40"
+                    title="شروع آزمون"
+                  >
+                    <ClipboardPenLine size={16} />
+                  </div>
+                )}
+
                 <h3 className="mb-2 text-sm font-bold text-[#495144] sm:text-base">
                   {item.title}
                 </h3>
@@ -139,11 +139,24 @@ export function BenefitsSection() {
                   {item.description}
                 </p>
               </div>
+            );
 
-              {/* دکمه معلق (Floating Button) */}
-         
-            </div>
-          ))}
+            // اگر کارت لینک دارد آن را درون تگ Link رندر می‌کنیم
+            if (item.link) {
+              return (
+                <Link key={idx} href={item.link} className={`${cardClasses} cursor-pointer hover:border-[#d59a8f]/40`}>
+                  {cardContent}
+                </Link>
+              );
+            }
+
+            // در غیر این صورت به عنوان یک div معمولی نمایش داده می‌شود
+            return (
+              <div key={idx} className={cardClasses}>
+                {cardContent}
+              </div>
+            );
+          })}
         </div>
       </Container>
     </section>

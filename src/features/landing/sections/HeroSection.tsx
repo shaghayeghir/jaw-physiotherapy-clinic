@@ -75,7 +75,7 @@ export default function HeroSection() {
                 </Button>
                 <a
                   href="tel:+989132702137"
-                  className="inline-flex h-11 items-center justify-center rounded-md border border-[#caa497] bg-transparent px-8 text-sm font-medium text-[#9d6257] transition-colors hover:bg-[#f7ece7] whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="inline-flex h-11 items-center justify-center rounded-xl border border-[#caa497] bg-transparent px-8 text-sm font-medium text-[#9d6257] transition-colors hover:bg-[#f7ece7] whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
                   تماس با سپیده مصری پور
                 </a>

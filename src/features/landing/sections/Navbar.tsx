@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui";
-import { Menu, X, CalendarDays } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 import Image from "next/image";
 const NAV_LINKS = [
   { title: "خانه", href: "/" },
@@ -61,11 +60,15 @@ export default function Navbar() {
 
           {/* بخش چپ: دکمه نوبت‌دهی (دسکتاپ) و منو همبرگری (موبایل) */}
           <div className="flex items-center gap-3">
-            <Button className="hidden sm:flex items-center gap-2 bg-[#d59a8f] hover:bg-[#76805d] text-white rounded-xl px-5">
-              <CalendarDays className="h-4 w-4" />
-              نوبت‌دهی آنلاین
-            </Button>
-
+            <a
+              href="https://wa.me/989132702137"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-[#d59a8f] text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-[#854f45] transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>مشاوره در واتساپ</span>
+            </a>
             {/* دکمه همبرگری موبایل */}
             <button
               className="lg:hidden p-2 text-[#495144]"
@@ -96,10 +99,15 @@ export default function Navbar() {
               </Link>
             ))}
             <hr className="border-[#f5ece3]" />
-            <Button className="w-full bg-[#8b9472] text-white flex items-center justify-center gap-2">
-              <CalendarDays className="h-4 w-4" />
-              نوبت‌دهی آنلاین
-            </Button>
+            <a
+              href="https://wa.me/989132702137"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-[#d59a8f] text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-[#854f45] transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>مشاوره در واتساپ</span>
+            </a>
           </div>
         </div>
       )}
