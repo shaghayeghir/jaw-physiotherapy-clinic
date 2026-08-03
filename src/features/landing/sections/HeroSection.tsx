@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+// فرض بر این است که کامپوننت Button شما یک لینک Next.js است یا یک A
 import { Button } from "@/components/ui";
 import Image from "next/image";
 import {
@@ -12,14 +13,14 @@ import {
   X,
 } from "lucide-react";
 
-// ساختار داده ویژگی‌ها با اضافه شدن فیلد توضیحات تفصیلی (برای پاپ‌آپ)
+// ساختار داده ویژگی‌ها با اضافه شدن فیلد link و content
 const FEATURES = [
   {
     id: "assessment",
     title: "ارزیابی تخصصی",
     description: "بررسی دقیق و علمی",
     icon: UserCheck2,
-    hasPopup: true,
+    // حالت پاپ‌آپ
     popupTitle: "ارزیابی تخصصی؛ اندازه‌گیری، تحلیل و پیگیری عینی درمان",
     popupContent: (
       <div className="space-y-4 text-sm leading-7 text-[#6b665f]">
@@ -49,14 +50,14 @@ const FEATURES = [
     title: "درمان غیرتهاجمی",
     description: "بدون نیاز به جراحی",
     icon: HeartHandshake,
-    hasPopup: false,
+    // این کارت نه لینک دارد و نه پاپ‌آپ
   },
   {
     id: "personalized",
     title: "طرح درمان شخصی‌سازی‌شده",
     description: "متناسب با شرایط شما",
     icon: Leaf,
-    hasPopup: true,
+    // حالت پاپ‌آپ
     popupTitle: "طرح درمان شخصی؛ درمان متناسب با زندگی هر بیمار",
     popupContent: (
       <div className="space-y-4 text-sm leading-7 text-[#6b665f]">
@@ -91,7 +92,7 @@ const FEATURES = [
     title: "بهبود پایدار",
     description: "کاهش درد و بازگشت عملکرد",
     icon: Activity,
-    hasPopup: false,
+    link: "/patientTestimonials", // <--- این بخش اضافه شد
   },
 ];
 
@@ -101,10 +102,59 @@ export default function HeroSection() {
     content: React.ReactNode;
   } | null>(null);
 
+  // یک کامپوننت کمکی برای رندر کردن کارت‌ها (چه a باشد، چه div)
+  const CardContent = ({ feat, Icon, hasAction, handleAction }: any) => (
+    <div
+      className={`
+        flex flex-row items-center gap-4 px-4 py-5 text-right
+        transition-all duration-200
+        
+        /* کلیک‌خور بودن */
+        ${hasAction ? "cursor-pointer hover:bg-[#faf6f2] group" : "cursor-default"}
+        
+        /* مرزها (Border logic as before) */
+        border-b border-[#f5ece3] last:border-b-0
+        sm:[&:nth-child(3)]:border-b-0 sm:[&:nth-child(4)]:border-b-0
+        sm:[&:nth-child(even)]:border-r sm:[&:nth-child(even)]:border-[#f5ece3]
+        lg:border-b-0 lg:[&:nth-child(even)]:border-r-0
+        lg:border-l lg:border-[#f5ece3] lg:last:border-l-0
+      `}
+      onClick={handleAction}
+    >
+      {/* بخش آیکون‌ها */}
+      <div
+        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-transform duration-200 ${
+          hasAction ? "group-hover:scale-105" : ""
+        } ${
+          feat.id % 2 === 0
+            ? "bg-[#faede8] text-[#d59a8f]"
+            : "bg-[#eff0ec] text-[#8b9472]"
+        }`}
+      >
+        <Icon className="h-6 w-6" />
+      </div>
+
+      {/* بخش متون کارت */}
+      <div className="flex flex-col justify-center">
+        <h3
+          className={`text-sm font-bold text-[#495144] flex items-center gap-1.5 ${
+            hasAction ? "group-hover:text-[#9d6257] transition-colors" : ""
+          }`}
+        >
+          {feat.title}
+          {/* نمایش آیکون فلش برای لینک */}
+  
+        </h3>
+        <p className="mt-1 text-xs text-[#8c857b] leading-relaxed">
+          {feat.description}
+        </p>
+      </div>
+    </div>
+  );
+
   return (
     <>
       <div className="w-full bg-white p-2 sm:p-8 lg:p-4">
-        {/* باکس داخلی هیرو با لبه‌های کاملاً گرد و پس‌زمینه کرم روشن */}
         <section
           dir="rtl"
           className="relative rounded-[2.5rem] lg:rounded-[3.5rem] bg-[#fdf8f2] px-6 pt-2 pb-10 lg:pb-12"
@@ -141,10 +191,10 @@ export default function HeroSection() {
                   شروع ارزیابی آنلاین
                 </Button>
                 <a
-                  href="tel:+989132702137"
+                  href="https://wa.me/989132702137" // لینک واتساپ مشاوره
                   className="inline-flex h-11 items-center justify-center rounded-xl border border-[#caa497] bg-transparent px-8 text-sm font-medium text-[#9d6257] transition-colors hover:bg-[#f7ece7] whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  تماس با سپیده مصری پور
+                  تماس و مشاوره واتساپ
                 </a>
               </div>
             </div>
@@ -172,73 +222,39 @@ export default function HeroSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {FEATURES.map((feat, idx) => {
               const Icon = feat.icon;
-              const hasAction = feat.hasPopup;
+              const hasAction =
+                feat.link || (feat.popupTitle && feat.popupContent);
+
+              // تابعی که هنگام کلیک اجرا می‌شود
+              const handleAction = () => {
+                if (feat.popupTitle && feat.popupContent) {
+                  setActivePopup({
+                    title: feat.popupTitle,
+                    content: feat.popupContent,
+                  });
+                }
+              };
+              if (feat.link) {
+                return (
+                  <a key={idx} href={feat.link} className="block">
+                    <CardContent
+                      feat={feat}
+                      Icon={Icon}
+                      hasAction={hasAction}
+                      handleAction={handleAction}
+                    />
+                  </a>
+                );
+              }
 
               return (
-                <div
-                  key={idx}
-                  onClick={() => {
-                    if (hasAction && feat.popupTitle && feat.popupContent) {
-                      setActivePopup({
-                        title: feat.popupTitle,
-                        content: feat.popupContent,
-                      });
-                    }
-                  }}
-                  className={`
-              flex flex-row items-center gap-4 px-4 py-5 text-right
-              transition-all duration-200
-              
-              /* کلیک‌خور بودن */
-              ${hasAction ? "cursor-pointer hover:bg-[#faf6f2] group" : "cursor-default"}
-              
-              /* ۱. استایل مرزها در موبایل (تک ستونه): خط زیر هر کارت به جز کارت آخر */
-              border-b border-[#f5ece3] last:border-b-0
-              
-              /* ۲. استایل مرزها در تبلت (دو ستونه): */
-              /* - حذف خط زیرین برای دو کارت آخر (ردیف دوم) */
-              sm:[&:nth-child(3)]:border-b-0 sm:[&:nth-child(4)]:border-b-0
-              /* - ایجاد خط عمودی بین ستون چپ و راست (ستون دوم و چهارم خط چپ می‌گیرند چون جهت RTL است) */
-              sm:[&:nth-child(even)]:border-r sm:[&:nth-child(even)]:border-[#f5ece3]
-              
-              /* ۳. استایل مرزها در دسکتاپ (چهار ستونه): */
-              /* - حذف تمام خطوط زیرین */
-              lg:border-b-0
-              /* - حذف خطوط عمودی تبلت */
-              lg:[&:nth-child(even)]:border-r-0
-              /* - ایجاد خط عمودی چپ برای کارت‌های اول، دوم و سوم جهت تفکیک کامل */
-              lg:border-l lg:border-[#f5ece3] lg:last:border-l-0
-            `}
-                >
-                  {/* بخش آیکون‌ها */}
-                  <div
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-transform duration-200 ${
-                      hasAction ? "group-hover:scale-105" : ""
-                    } ${
-                      idx % 2 === 0
-                        ? "bg-[#faede8] text-[#d59a8f]"
-                        : "bg-[#eff0ec] text-[#8b9472]"
-                    }`}
-                  >
-                    <Icon className="h-6 w-6" />
-                  </div>
-
-                  {/* بخش متون کارت */}
-                  <div className="flex flex-col justify-center">
-                    <h3
-                      className={`text-sm font-bold text-[#495144] flex items-center gap-1.5 ${
-                        hasAction
-                          ? "group-hover:text-[#9d6257] transition-colors"
-                          : ""
-                      }`}
-                    >
-                      {feat.title}
-                
-                    </h3>
-                    <p className="mt-1 text-xs text-[#8c857b] leading-relaxed">
-                      {feat.description}
-                    </p>
-                  </div>
+                <div key={idx}>
+                  <CardContent
+                    feat={feat}
+                    Icon={Icon}
+                    hasAction={hasAction}
+                    handleAction={handleAction}
+                  />
                 </div>
               );
             })}
@@ -246,7 +262,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* کامپوننت پاپ‌آپ اختصاصی (Modal) */}
+      {/* کامپوننت پاپ‌آپ اختصاصی (Modal)  */}
       {activePopup && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm transition-all duration-300"
