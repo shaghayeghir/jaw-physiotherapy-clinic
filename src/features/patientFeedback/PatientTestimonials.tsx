@@ -27,7 +27,6 @@ export default async function PatientTestimonials() {
     .order('created_at', { ascending: false })
 
   if (error) {
-    console.error('Error loading approved testimonials:', error)
     return null
   }
 
