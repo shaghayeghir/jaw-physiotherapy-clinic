@@ -8,8 +8,7 @@ export default function Page() {
     <>
       <HeroSection />
       <BenefitsSection />
-      <PatientTestimonials/>
-      <PatientFeedback/>
+
     </>
   );
 }

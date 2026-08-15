@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/features/landing/sections/Navbar";
 import Footer from "@/features/landing/sections/Footer";
 import { siteMetadata } from "@/seo/siteMetadata";
+import PatientFeedback from "@/features/patientFeedback/PatientFeedback";
+import PatientTestimonials from "@/features/patientFeedback/PatientTestimonials";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteMetadata.siteUrl),
@@ -55,7 +57,10 @@ export default function RootLayout({
         <Navbar />
         <main className="h-[calc(100vh-155px)] overflow-y-auto">
           {children}
+          <PatientTestimonials />
+          <PatientFeedback />
         </main>
+
         <Footer />
       </body>
     </html>
