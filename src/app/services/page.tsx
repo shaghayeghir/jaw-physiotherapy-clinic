@@ -19,19 +19,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/services",
   },
-  openGraph: {
-    title: "خدمات تخصصی فیزیوتراپی فک و گردن",
-    description:
-      "آشنایی با خدمات تخصصی کلینیک در ارزیابی و درمان اختلالات مفصل فکی–گیجگاهی، گردن و اکلوژن.",
-    type: "website",
-    url: "/services",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "خدمات تخصصی فیزیوتراپی فک و گردن",
-    description:
-      "ارزیابی تخصصی TMJ، درمان دستی و تحلیل ارتباط فک، گردن و اکلوژن.",
-  },
   robots: {
     index: true,
     follow: true,
@@ -43,8 +30,7 @@ const services = [
     id: "beyond-tmj-assessment",
     number: "۱",
     title: "ارزیابی فراتر از مفصل فک",
-    excerpt:
-      "ارزیابی دقیق علت علائم، الگوی حرکت فک، وضعیت عضلات، گردن و عوامل مؤثر بر درد و اختلال عملکرد.",
+    excerpt: "ارزیابی دقیق علت علائم، الگوی حرکت فک، وضعیت عضلات، گردن و عوامل مؤثر بر درد و اختلال عملکرد.",
     icon: ClipboardCheck,
     content: `اولین جلسه درمان، برای من تنها آغاز درمان نیست؛ بلکه آغاز شناخت مسئله‌ای است که هر بیمار با آن وارد اتاق درمان می‌شود. 
 تجربه بالینی و پژوهش‌های علمی نشان می‌دهند که درد همیشه از همان جایی که احساس می‌شود منشأ نمی‌گیرد و یک تصویر MRI یا رادیوگرافی نیز به تنهایی نمی‌تواند دلیل علائم بیمار را توضیح دهد.
@@ -63,8 +49,7 @@ const services = [
     id: "manual-therapy",
     number: "۲",
     title: "درمان دستی؛ قلب فرآیند درمان",
-    excerpt:
-      "درمان دستی تخصصی برای مفصل، عضلات و بافت‌های نرم با تکیه بر ارزیابی دقیق، استدلال بالینی و آموزش حرکتی.",
+    excerpt: "درمان دستی تخصصی برای مفصل، عضلات و بافت‌های نرم با تکیه بر ارزیابی دقیق، استدلال بالینی و آموزش حرکتی.",
     icon: Hand,
     content: `درمان دستی (Manual Therapy) مجموعه‌ای از تکنیک‌های تخصصی است که فیزیوتراپیست با استفاده از دستان خود برای درمان مفاصل، عضلات، فاشیا و سایر بافت‌های نرم به کار می‌گیرد. این درمان ممکن است شامل تکنیک‌های مختلفی مانند موبیلیزیشن مفاصل، آزادسازی بافت‌های نرم، کشش، ماساژ درمانی، کاهش تنش عضلات یا سایر روش‌های دستی باشد. اما درمان دستی، تنها اجرای این تکنیک‌ها نیست؛ بلکه فرآیندی مبتنی بر دانش آناتومی، بیومکانیک، علوم اعصاب، فیزیولوژی درد و استدلال بالینی است.
 در بسیاری از اختلالات مفصل فکی–گیجگاهی، بخش قابل توجهی از زمان هر جلسه درمان به درمان دستی اختصاص پیدا می‌کند؛ زیرا تا زمانی که حرکت طبیعی مفاصل و عملکرد عضلات بهبود پیدا نکند، انجام بسیاری از تمرینات نیز اثربخشی مطلوبی نخواهد داشت. در صورت نیاز، ممکن است از روش‌هایی مانند سوزن خشک، لیزردرمانی یا سایر مودالیته‌های فیزیوتراپی نیز استفاده شود، اما این روش‌ها در برنامه درمانی نقش مکمل دارند. تصمیم اصلی همواره بر پایه ارزیابی دقیق و درمان دستی هدفمند گرفته می‌شود.
@@ -79,12 +64,10 @@ const services = [
     id: "tmj-neck-occlusion",
     number: "۳",
     title: "تحلیل ارتباط مفصل فک، گردن و اکلوژن",
-    excerpt:
-      "بررسی ارتباط عملکرد مفصل فکی–گیجگاهی، مفاصل فوقانی گردن و نحوه تماس دندان‌ها برای درمان هدفمندتر.",
+    excerpt: "بررسی ارتباط عملکرد مفصل فکی–گیجگاهی، مفاصل فوقانی گردن و نحوه تماس دندان‌ها برای درمان هدفمندتر.",
     icon: Network,
     image: "/image/services/services3.png",
-    imageAlt:
-      "تحلیل ارتباط مفصل فک، گردن و اکلوژن در اختلالات مفصل فکی گیجگاهی",
+    imageAlt: "تحلیل ارتباط مفصل فک، گردن و اکلوژن در اختلالات مفصل فکی گیجگاهی",
     content: `عملکرد طبیعی فک، حاصل همکاری سه بخش مهم است: 
 1.	مفصل فکی–گیجگاهی
 2.	مفاصل فوقانی گردن  (وضعیت قرارگیری مهره اول در رابطه با پس سر و مهره دوم نسبت به مهره اول)
@@ -98,21 +81,22 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main dir="rtl" className="min-h-screen bg-[#fcf8f5] text-[#3f403b]">
-      <section className="border-b border-[#eee1da] bg-[#fdf7f3]">
-        <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-12">
-          <span className="inline-block rounded-full border border-[#e7d5cd] bg-white px-3 py-1 text-sm font-medium text-[#9d6257]">
+    <main dir="rtl" className="min-h-screen bg-[#fdf8f2] text-[#495144]">
+      {/* هدر صفحه: ترکیبی از سبز مریمگلی (پس‌زمینه) و رزگلد (تگ‌ها) */}
+      <section className="bg-white border-b border-[#f5ece3]">
+        <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+          <span className="inline-block rounded-full bg-[#faede8] px-4 py-1.5 text-xs font-semibold text-[#d59a8f]">
             خدمات تخصصی کلینیک
           </span>
 
-          <h1 className="mt-4 text-2xl font-bold leading-relaxed text-[#41453b] sm:text-3xl">
+          <h1 className="mt-5 text-3xl font-extrabold leading-tight tracking-tight text-[#495144] sm:text-4xl">
             خدمات فیزیوتراپی تخصصی فک و گردن
           </h1>
 
-          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#6d6a66] sm:text-base sm:leading-8">
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-[#6b665f] sm:text-base sm:leading-8">
             در این صفحه می‌توانید با رویکرد درمانی کلینیک در ارزیابی و درمان
-            اختلالات مفصل فکی–گیجگاهی، درد فک، مشکلات گردن و ارتباط آن با اکلوژن
-            آشنا شوید. متن هر بخش به‌صورت کامل ارائه شده است.
+            اختلالات مفصل فکی–گیجگاهی، درد فک، مشکلات گردن و ارتباط آن با
+            اکلوژن آشنا شوید. متن هر بخش به‌صورت کامل ارائه شده است.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -120,7 +104,7 @@ export default function ServicesPage() {
               <a
                 key={service.id}
                 href={`#${service.id}`}
-                className="rounded-full border border-[#dec9c0] bg-white px-4 py-2 text-sm text-[#8d5c52] transition hover:bg-[#f7ece7]"
+                className="rounded-full border border-[#8b9472]/30 bg-[#eff0ec] px-4 py-2 text-sm font-medium text-[#8b9472] transition hover:bg-[#8b9472] hover:text-white"
               >
                 {service.number} - {service.title}
               </a>
@@ -129,45 +113,52 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* بخش کارت‌ها */}
       <section className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-12">
         <div className="space-y-5 sm:space-y-6">
-          {services.map((service) => {
+          {services.map((service, idx) => {
             const Icon = service.icon;
+            // استفاده متناوب از تم سبز و رزگلد
+            const isGreen = idx % 2 === 0;
 
             return (
               <article
                 key={service.id}
                 id={service.id}
-                className="scroll-mt-24 rounded-2xl border border-[#eaded7] bg-white shadow-[0_6px_24px_rgba(60,40,30,0.05)]"
+                className="scroll-mt-24 rounded-[2rem] border border-[#f5ece3] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.03)]"
               >
                 <details className="group">
                   <summary className="flex cursor-pointer list-none items-start gap-4 p-5 sm:p-6">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f7ece7] text-[#9d6257]">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    <div
+                      className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-transform duration-200 group-hover:scale-105 ${
+                        isGreen
+                          ? "bg-[#eff0ec] text-[#8b9472]"
+                          : "bg-[#faede8] text-[#d59a8f]"
+                      }`}
+                    >
+                      <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <span className="rounded-full bg-[#fcf1eb] px-2.5 py-1 text-xs font-semibold text-[#9d6257]">
-                        خدمت {service.number}
-                      </span>
+               
 
-                      <h2 className="mt-3 text-lg font-bold leading-8 text-[#41453b] sm:text-xl">
+                      <h2 className="mt-3 text-lg font-bold text-[#495144] sm:text-xl">
                         {service.title}
                       </h2>
 
-                      <p className="mt-2 text-sm leading-7 text-[#6f6a66]">
+                      <p className="mt-2 text-sm leading-7 text-[#8c857b]">
                         {service.excerpt}
                       </p>
                     </div>
 
-                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#e7d5cd] text-[#9d6257] transition group-open:rotate-180">
+                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#f5ece3] text-sm text-[#8c857b] transition group-open:rotate-180">
                       ▼
                     </div>
                   </summary>
 
-                  <div className="border-t border-[#f1e7e1] px-5 pb-5 pt-5 sm:px-6 sm:pb-6">
+                  <div className="border-t border-[#f5ece3] px-5 pb-5 pt-5 sm:px-6 sm:pb-6">
                     {service.image && (
-                      <div className="relative mb-5 h-[260px] w-full overflow-hidden rounded-2xl bg-[#f8f1ed] sm:h-[320px]">
+                      <div className="relative mb-5 h-[260px] w-full overflow-hidden rounded-2xl bg-[#fdf8f2] sm:h-[320px]">
                         <Image
                           src={service.image}
                           alt={service.imageAlt || service.title}
@@ -178,8 +169,8 @@ export default function ServicesPage() {
                       </div>
                     )}
 
-                    <div className="rounded-2xl bg-[#fcfaf8] px-4 py-4 sm:px-5 sm:py-5">
-                      <p className="whitespace-pre-line text-[15px] leading-8 text-[#4d4d48] sm:text-base sm:leading-9">
+                    <div className="rounded-2xl bg-[#faf6f2] px-4 py-4 sm:px-5 sm:py-5">
+                      <p className="whitespace-pre-line text-[15px] leading-8 text-[#6b665f] sm:text-base sm:leading-9">
                         {service.content}
                       </p>
                     </div>

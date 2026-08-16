@@ -55,7 +55,7 @@ export default function RootLayout({
         className={`${vazirmatn.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
-        <main className="h-[calc(100vh-155px)] overflow-y-auto">
+        <main className="h-[calc(100vh-158px)] overflow-y-auto">
           {children}
           <PatientTestimonials />
           <PatientFeedback />
