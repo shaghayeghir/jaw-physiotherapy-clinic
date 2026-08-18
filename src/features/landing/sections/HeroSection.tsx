@@ -11,6 +11,7 @@ import {
   Leaf,
   Activity,
   X,
+  Heart,
 } from "lucide-react";
 
 // ساختار داده ویژگی‌ها با اضافه شدن فیلد link و content
@@ -177,9 +178,13 @@ export default function HeroSection() {
                 درمان اختلال مفصل گیجگاهی-فکی (TMJ) با رویکردی علمی و شخصی‌سازی
                 شده
               </p>
-              <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-base leading-7 text-[#d59a8f] sm:text-lg">
-                آرامش جسم تو حس خوب من{" "}
-                <span className="text-[#d59a8f] animate-pulse">❤</span>
+              <p className="mt-4 mx-auto flex max-w-xl items-center justify-center gap-1 text-base leading-7 text-[#d59a8f] sm:text-lg lg:mx-0 lg:justify-start">
+                <span>آرامش جسم تو حس خوب من</span>
+
+                <Heart
+                  className="h-5 w-5 shrink-0 fill-[#d59a8f] text-[#d59a8f] animate-pulse"
+                  aria-hidden="true"
+                />
               </p>
 
               <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
