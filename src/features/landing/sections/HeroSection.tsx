@@ -143,7 +143,6 @@ export default function HeroSection() {
         >
           {feat.title}
           {/* نمایش آیکون فلش برای لینک */}
-  
         </h3>
         <p className="mt-1 text-xs text-[#8c857b] leading-relaxed">
           {feat.description}
@@ -179,7 +178,8 @@ export default function HeroSection() {
                 شده
               </p>
               <p className="mt-4 max-w-xl mx-auto lg:mx-0 text-base leading-7 text-[#d59a8f] sm:text-lg">
-                آرامش جسم تو حس خوب من ❤
+                آرامش جسم تو حس خوب من{" "}
+                <span className="text-[#d59a8f] animate-pulse">❤</span>
               </p>
 
               <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-3">
