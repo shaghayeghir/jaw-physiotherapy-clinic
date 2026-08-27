@@ -9,7 +9,7 @@ export function ResultCard({ result, onRestart }: any) {
 
       <a
         href="tel:+989132702137"
-        className="inline-flex items-center justify-center rounded-2xl bg-[#5f6f52] px-5 py-3 text-white"
+        className="inline-flex items-center justify-center rounded-2xl bg-[#5f6f52] px-5 py-3 text-white mt-5"
       >
         تماس با سپیده مصری پور
       </a>
