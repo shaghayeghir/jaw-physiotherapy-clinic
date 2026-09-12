@@ -15,7 +15,7 @@ import {
 
 const MODAL_DATA = {
   knowledge: {
-    title: "آموزش؛ بخش جدایی‌ناپذیر درمان",
+    title: "آموزش؛ کلید ماندگاری بهبودی",
     icon: <Award className="h-7 w-7 sm:h-8 sm:w-8 text-[#d59a8f]" />,
     content: (
       <div
@@ -78,7 +78,10 @@ const MODAL_DATA = {
         className="space-y-4 text-right text-sm leading-7 text-[#6b665f] sm:text-base sm:leading-8"
         dir="rtl"
       >
-        <p>پیشرفت درمان علاوه بر گزارش بهبودی توسط مراجع، باید تا حد امکان قابل اندازه‌گیری باشد.</p>
+        <p>
+          پیشرفت درمان علاوه بر گزارش بهبودی توسط مراجع، باید تا حد امکان قابل
+          اندازه‌گیری باشد.
+        </p>
         <p>
           به همین دلیل، در طول درمان، دامنه باز شدن دهان، دامنه بدون درد، حرکات
           جانبی، شدت و محل درد، حساسیت عضلات و سایر شاخص‌های عملکردی به‌صورت
@@ -119,12 +122,12 @@ const MODAL_DATA = {
         </p>
         <p>
           مراجعه‌کنندگان من تنها یک تشخیص یا یک تصویر MRI نیستند؛ هر کدام انسانی
-          با دغدغه‌ها، اهداف و سبک زندگی متفاوت هستند و تلاش می‌کنم این
-          تفاوت‌ها در تمام مراحل درمان دیده شوند. اینکه مراجع، معلم یا روانشناس
-          است و ساعت‌ها صحبت می‌کند، کارمند است و زمان زیادی پشت میز می‌نشیند
-          یا شغل دیگری دارد، در طراحی برنامه درمانی اهمیت دارد. همچنین به عواملی
-          مانند کیفیت خواب، وضعیت بدنی، استرس و اضطراب توجه می‌کنم؛ زیرا این
-          عوامل می‌توانند بر تجربه درد و بهبود تأثیر بگذارند.
+          با دغدغه‌ها، اهداف و سبک زندگی متفاوت هستند و تلاش می‌کنم این تفاوت‌ها
+          در تمام مراحل درمان دیده شوند. اینکه مراجع، معلم یا روانشناس است و
+          ساعت‌ها صحبت می‌کند، کارمند است و زمان زیادی پشت میز می‌نشیند یا شغل
+          دیگری دارد، در طراحی برنامه درمانی اهمیت دارد. همچنین به عواملی مانند
+          کیفیت خواب، وضعیت بدنی، استرس و اضطراب توجه می‌کنم؛ زیرا این عوامل
+          می‌توانند بر تجربه درد و بهبود تأثیر بگذارند.
         </p>
         <p className="font-medium text-[#d59a8f]">
           در ارزیابی درد، تنها شدت آن برای من مهم نیست. اینکه درد چه تأثیری بر
@@ -208,7 +211,7 @@ export function AboutMeSection() {
                   تخصص درمان TMD
                 </p>
                 <p className="text-[10px] text-[#8c857b] sm:text-xs">
-                  فک، گردن و اختلالات مفصل
+                اختلالات مفصل فک، گردن و سردرد
                 </p>
               </div>
             </div>
@@ -229,52 +232,17 @@ export function AboutMeSection() {
           <p className="mt-5 text-center text-sm leading-7 text-[#8c857b] sm:mt-6 sm:text-base sm:leading-8 lg:max-w-xl lg:text-right lg:text-lg">
             من سپیده مصری‌پور هستم؛ فیزیوتراپیست با تمرکز بر اختلالات مفصل
             فکی–گیجگاهی (TMJ) و دردهای ناحیه سر و گردن. در دوره کارشناسی ارشد،
-            تمرکز پژوهشی من بر بیماران با اختلالات مفصل فکی–گیجگاهی  بوده
-            و بخش عمده فعالیت بالینی و مطالعاتم را نیز به ارزیابی و درمان این
-            گروه از بیماران اختصاص داده‌ام. این مسیر به من آموخته است که درمان
-            مؤثر، تنها به کاهش علائم محدود نمی‌شود؛ بلکه با شناخت دقیق علت
-            اختلال، درک شرایط هر مراجع و طراحی برنامه درمانی متناسب با نیازهای
-            او آغاز می‌شود.
+            تمرکز پژوهشی من بر بیماران با اختلالات مفصل فکی–گیجگاهی بوده و بخش
+            عمده فعالیت بالینی و مطالعاتم را نیز به ارزیابی و درمان این گروه از
+            بیماران اختصاص داده‌ام. این مسیر به من آموخته است که درمان مؤثر،
+            تنها به کاهش علائم محدود نمی‌شود؛ بلکه با شناخت دقیق علت اختلال، درک
+            شرایط هر مراجع و طراحی برنامه درمانی متناسب با نیازهای او آغاز
+            می‌شود.
           </p>
 
           {/* کارت‌ها */}
+
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div
-              onClick={() => openModal("knowledge")}
-              className="group cursor-pointer rounded-2xl border border-[#eee3d7] bg-white p-4 sm:p-5 shadow-sm transition-all duration-300 hover:border-[#d59a8f]/40 hover:shadow-md"
-            >
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#d59a8f]/10 text-[#d59a8f] transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
-                <Award size={20} />
-              </div>
-              <h3 className="flex items-center gap-2 text-sm font-bold text-[#495144] transition-colors group-hover:text-[#d59a8f]">
-                <span>دانش تخصصی</span>
-                <span className="rounded-full bg-[#d59a8f]/10 px-2 py-0.5 text-[10px] font-normal text-[#d59a8f]">
-                  بیشتر
-                </span>
-              </h3>
-              <p className="mt-1 text-xs leading-6 text-[#8c857b]">
-                آموزش؛ بخش جدایی‌ناپذیر درمان
-              </p>
-            </div>
-
-            <div
-              onClick={() => openModal("treatment")}
-              className="group cursor-pointer rounded-2xl border border-[#eee3d7] bg-white p-4 sm:p-5 shadow-sm transition-all duration-300 hover:border-[#8b9472]/40 hover:shadow-md"
-            >
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#dfe2d8] text-[#495144] transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
-                <HeartPulse size={20} />
-              </div>
-              <h3 className="flex items-center gap-2 text-sm font-bold text-[#495144] transition-colors group-hover:text-[#8b9472]">
-                <span> رسالت من</span>
-                <span className="rounded-full bg-[#dfe2d8] px-2 py-0.5 text-[10px] font-normal text-[#495144]">
-                  بیشتر
-                </span>
-              </h3>
-              <p className="mt-1 text-xs leading-6 text-[#8c857b]">
-                رسالت من در بهبود عملکرد واقعی شما
-              </p>
-            </div>
-
             <div
               onClick={() => openModal("assessment")}
               className="group cursor-pointer rounded-2xl border border-[#eee3d7] bg-white p-4 sm:p-5 shadow-sm transition-all duration-300 hover:border-[#8b9472]/40 hover:shadow-md"
@@ -292,7 +260,6 @@ export function AboutMeSection() {
                 اندازه‌گیری، تحلیل بیومکانیکال و پیگیری عینی روند
               </p>
             </div>
-
             <div
               onClick={() => openModal("customPlan")}
               className="group cursor-pointer rounded-2xl border border-[#eee3d7] bg-white p-4 sm:p-5 shadow-sm transition-all duration-300 hover:border-[#d59a8f]/40 hover:shadow-md"
@@ -308,6 +275,40 @@ export function AboutMeSection() {
               </h3>
               <p className="mt-1 text-xs leading-6 text-[#8c857b]">
                 درمان اختصاصی متناسب با نیازها و سبک زندگی شما
+              </p>
+            </div>
+            <div
+              onClick={() => openModal("treatment")}
+              className="group cursor-pointer rounded-2xl border border-[#eee3d7] bg-white p-4 sm:p-5 shadow-sm transition-all duration-300 hover:border-[#8b9472]/40 hover:shadow-md"
+            >
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#dfe2d8] text-[#495144] transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
+                <HeartPulse size={20} />
+              </div>
+              <h3 className="flex items-center gap-2 text-sm font-bold text-[#495144] transition-colors group-hover:text-[#8b9472]">
+                <span> رسالت من</span>
+                <span className="rounded-full bg-[#dfe2d8] px-2 py-0.5 text-[10px] font-normal text-[#495144]">
+                  بیشتر
+                </span>
+              </h3>
+              <p className="mt-1 text-xs leading-6 text-[#8c857b]">
+                رسالت من در بهبود عملکرد واقعی شما
+              </p>
+            </div>
+            <div
+              onClick={() => openModal("knowledge")}
+              className="group cursor-pointer rounded-2xl border border-[#eee3d7] bg-white p-4 sm:p-5 shadow-sm transition-all duration-300 hover:border-[#d59a8f]/40 hover:shadow-md"
+            >
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#d59a8f]/10 text-[#d59a8f] transition-transform group-hover:scale-105 sm:h-11 sm:w-11">
+                <Award size={20} />
+              </div>
+              <h3 className="flex items-center gap-2 text-sm font-bold text-[#495144] transition-colors group-hover:text-[#d59a8f]">
+                <span>دانش تخصصی</span>
+                <span className="rounded-full bg-[#d59a8f]/10 px-2 py-0.5 text-[10px] font-normal text-[#d59a8f]">
+                  بیشتر
+                </span>
+              </h3>
+              <p className="mt-1 text-xs leading-6 text-[#8c857b]">
+                آموزش؛ کلید ماندگاری بهبودی
               </p>
             </div>
           </div>

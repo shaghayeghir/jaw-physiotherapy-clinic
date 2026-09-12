@@ -5,7 +5,7 @@ export const siteMetadata = {
   description:
     "مرکز تخصصی ارزیابی و درمان اختلالات فک، دردهای عضلانی، TMJ و مشکلات مرتبط با مفصل گیجگاهی فکی.",
   siteUrl: "https://example.com", //  با دامنه اصلی  عوض شود
-  siteName: "کلینیک فیزیوتراپی فک",
+  siteName: "فیزیوتراپی تخصصی اختلالات فکی‌گیجگاهی، سردرد و گردن درد",
   locale: "fa_IR",
   type: "website",
   ogImage: "/opengraph-image",
